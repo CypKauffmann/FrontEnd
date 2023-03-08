@@ -4,16 +4,20 @@ import { Utilisateur } from "./utilisateur";
 
 export class Commercial extends Utilisateur {
 
-    rendezVous!:RendezVous[] ;
-    historiques!:Historique[] ;
+    rendezVousC!:RendezVous[] ;
+    historiquesC!:Historique[] ;
 
     constructor(rendezVous?:RendezVous[], historiques?:Historique[])
     {
+<<<<<<< HEAD
         super()
+=======
+        super();
+>>>>>>> main
         if(rendezVous)
-        this.rendezVous = rendezVous
+        this.rendezVousC = rendezVous
         if(historiques)
-        this.historiques = historiques
+        this.historiquesC = historiques
     }
 
 }

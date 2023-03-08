@@ -8,7 +8,11 @@ export class Formateur extends Utilisateur {
 
     constructor(formations?:Formation[])
     {
+<<<<<<< HEAD
         super()
+=======
+        super();
+>>>>>>> main
         if(formations)
         this.formations = formations
     }
