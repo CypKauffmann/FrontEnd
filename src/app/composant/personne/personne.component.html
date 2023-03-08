@@ -1,0 +1,40 @@
+<h1>Espace personnes </h1>
+
+
+<form #f= "ngForm" (ngSubmit)="ajouter(f)">
+   
+    Nom : <input type="text" name="nom" [(ngModel)]="personne.nomPers">
+    Prenom : <input type="text" name="prenom" [(ngModel)]="personne.prenomPers">
+    Age : <input type="text" name="age" [(ngModel)]="personne.age">
+    email : <input type="text" name="email" [(ngModel)]="personne.email">
+    Tel : <input type="text" name="tel" [(ngModel)]="personne.tel">
+
+    <button type="submit">Ajouter</button>
+</form>
+
+
+<table class="table">
+    <tr>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Age</td>
+        <td>email</td>
+        <td>Tel</td> 
+        <td>Action</td>
+        <td>Action1</td>
+        <td>Action2</td>
+    </tr>
+
+    <tr *ngFor="let pers of personnes">
+            <td> {{pers.nomPers | uppercase }}</td>
+            <td> {{pers.prenomPers | titlecase}}</td>
+            <td> {{pers.age}}</td>
+            <td> {{pers.email}}</td>
+            <td>{{pers.tel}}</td>
+            <td><button (click)="supprimer(pers.idPers)">Supprimer</button></td>
+            <td><button (click)="afficherAll()">Afficher</button></td>
+            <td><button (click)="modifier(pers.idPers)">modifier</button></td>
+    
+    </tr>
+    
+</table>   

@@ -10,4 +10,5 @@ export class Formateur {
         if(formations)
         this.formations = formations
     }
+    
 }
