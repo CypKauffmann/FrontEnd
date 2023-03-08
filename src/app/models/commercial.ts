@@ -9,7 +9,11 @@ export class Commercial extends Utilisateur {
 
     constructor(rendezVous?:RendezVous[], historiques?:Historique[])
     {
+<<<<<<< HEAD
+        super()
+=======
         super();
+>>>>>>> main
         if(rendezVous)
         this.rendezVousC = rendezVous
         if(historiques)

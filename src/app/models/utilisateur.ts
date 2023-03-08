@@ -11,7 +11,11 @@ export class Utilisateur extends Personne {
 
     constructor(username?:string, password?:string, role?:Role)
     {
+<<<<<<< HEAD
+        super()
+=======
         super();
+>>>>>>> main
         if(username)
         this.username = username
         if(password)
