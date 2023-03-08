@@ -1,7 +1,11 @@
 import { Personne } from "./personne";
 import { Role } from "./role";
 
+<<<<<<< HEAD
+export class Utilisateur extends Personne{
+=======
 export class Utilisateur extends Personne {
+>>>>>>> main
 
     username!:string ;
     password!:string ;
@@ -14,7 +18,11 @@ export class Utilisateur extends Personne {
 <<<<<<< HEAD
         super()
 =======
+<<<<<<< HEAD
+        super()
+=======
         super();
+>>>>>>> main
 >>>>>>> main
         if(username)
         this.username = username

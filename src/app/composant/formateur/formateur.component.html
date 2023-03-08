@@ -1,0 +1,9 @@
+<p> Espace formateur </p>
+
+
+<form #f= "ngForm" (ngSubmit)="ajouter(f)">
+   
+    Formateur : <input type="text" name="formateur" [(ngModel)]="formateur.personnes.idPers">
+    
+    <button type="submit">Ajouter</button>
+</form>

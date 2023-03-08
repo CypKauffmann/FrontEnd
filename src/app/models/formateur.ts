@@ -16,4 +16,5 @@ export class Formateur extends Utilisateur {
         if(formations)
         this.formations = formations
     }
+    
 }
