@@ -1,17 +1,19 @@
 import { Historique } from "./historique";
 import { RendezVous } from "./rendez-vous";
+import { Utilisateur } from "./utilisateur";
 
-export class Commercial {
+export class Commercial extends Utilisateur {
 
-    rendezVous!:RendezVous[] ;
-    historiques!:Historique[] ;
+    rendezVousC!:RendezVous[] ;
+    historiquesC!:Historique[] ;
 
     constructor(rendezVous?:RendezVous[], historiques?:Historique[])
     {
+        super();
         if(rendezVous)
-        this.rendezVous = rendezVous
+        this.rendezVousC = rendezVous
         if(historiques)
-        this.historiques = historiques
+        this.historiquesC = historiques
     }
 
 }
