@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Utilisateur } from '../models/utilisateur';
 
 @Injectable({
@@ -18,6 +17,7 @@ export class utilisateurService {
   }
 
   add(utilisateur: Utilisateur) {
+    console.log("service "+utilisateur.nomPers)
     return this.http.post('http://localhost:8015/api/utilisateurs/', utilisateur);
   }
 
@@ -28,4 +28,21 @@ export class utilisateurService {
   getByUsername(username: string){
     return this.http.get<Utilisateur>(`http://localhost:8015/api/utilisateurs/username/${username}`);
   }
+
+
+  assignParticipant(idPers: number){
+    return this.http.get(`http://localhost:8015/api/utilisateurs/assign/participant/${idPers}`);
+  }
+  
+  assignFormateur(idPers: number){
+    return this.http.get(`http://localhost:8015/api/utilisateurs/assign/formateur/${idPers}`);
+  }
+  
+  assignCommercial(idPers: number){
+    return this.http.get(`http://localhost:8015/api/utilisateurs/assign/commercial/${idPers}`);
+  }
+  
+
+
+
 }
