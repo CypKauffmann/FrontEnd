@@ -1,1 +1,29 @@
-<p>participant works!</p>
+<p>Espace participants </p>
+
+
+<h2>Liste des participants</h2>
+<table class="table">
+    <thead>
+      <tr>
+          
+          <th>Username utilisateur Participant</th>
+          <th>Formations</th>
+          
+      </tr>
+    </thead>
+ 
+    <tbody>
+        <tr *ngFor="let part of participants">
+            <td>{{part.username}}</td>
+          
+          <td>
+            <ul>
+              <li *ngFor="let formation of part.formations">
+                <th>{{ formation.nomForm }} ({{ formation.dateDebut }} - {{ formation.dateFin }}) - {{ formation.prix }} € - {{ formation.duree }} mois</th>
+                </li>
+            </ul>
+          </td>
+    
+        </tr>
+  </tbody>
+</table>
