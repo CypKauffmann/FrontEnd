@@ -9,10 +9,16 @@ import { GestionFormationComponent } from './composant/gestion-formation/gestion
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
+import { ParticipantComponent } from './composant/participant/participant.component';
+import { FormateurComponent } from './composant/formateur/formateur.component';
+import { PersonneComponent } from './composant/personne/personne.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ParticipantComponent,
+    FormateurComponent,
+    PersonneComponent,
     CommercialComponent,
     GestionUtilisateurComponent,
     GestionFormateurComponent,
