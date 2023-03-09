@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { CommercialComponent } from './composant/commercial/commercial.component';
+import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/gestion-utilisateur.component';
 
 const routes: Routes = [
-  {path:'afficherRdv', component:CommercialComponent}
+  {path:'GestionUtilisateur', component: GestionUtilisateurComponent }
 ];
 
 @NgModule({
