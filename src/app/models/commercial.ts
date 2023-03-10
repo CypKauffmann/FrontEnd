@@ -10,7 +10,6 @@ export class Commercial extends Utilisateur {
     constructor(rendezVous?:RendezVous[], historiques?:Historique[])
     {
         super()
-
         if(rendezVous)
         this.rendezVousC = rendezVous
         if(historiques)

@@ -1,0 +1,49 @@
+
+<h1>Bonjour (mettre le nom du commercial connecté)</h1>
+<h2>Espace Commercial</h2>
+
+<br>
+<hr width="75%">
+<br>
+
+<h3><em>Rendez-vous à venir</em></h3>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Prospect</th>
+        <th>Commercial associé</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let rdv of rendezvous">
+        <th>{{rdv.idRdv}}</th>
+        <td>{{rdv.dateRdv | date:'dd/MM/yyyy'}}</td>
+        <td>{{rdv.dateRdv | date:'HH:mm'}}</td>
+        <td>{{rdv.personne.nomPers}} {{rdv.personne.prenomPers}}</td>
+        <td>{{rdv.commercial.nomPers}} {{rdv.commercial.prenomPers}}</td>
+        <td><button (click)="supprimerRdv(rdv.idRdv)">Supprimer</button>
+        <button (click)="modifierRdv(rdv.idRdv)">Modifier</button></td>
+    </tr>
+</table>
+
+<br>
+<hr width="75%">
+<br>
+
+<h1>Ajout/Modification de rendez-vous</h1>
+
+<form (ngSubmit)="ajoutRdv()">
+    <label for="dateRdv" class="col-sm-2 col-form-label">Date du nouveau rendez-vous </label>
+    <input name="dateRdv" type="datetime-local" [(ngModel)] ="rdv.dateRdv" class="form-control" placeholder="jj/mm/aaaa"/>
+   <!-- <input name="dateRdv" type="datetime-local" [ngModel]="rdv.dateRdv | date:'yyyy-MM-dd HH:mm'" (ngModelChange)="rdv.dateRdv=$event" class="form-control" placeholder="jj/mm/aaaa"/>-->
+    <br>
+    <label for="idPropect">Prospect </label>
+    <select class="form-control" name="idPropect" [(ngModel)]="idProspect">
+        <option [value]="null">Choisir un prospect</option>
+        <option *ngFor="let prosp of prospects" [value]="prosp.idPers" >{{prosp.nomPers}} {{prosp.prenomPers}}</option>
+    </select>
+
+    <br><br>      
+    <button type="submit" class="btn btn-primary mb-2">Ajouter/Modifier</button>
+</form>
