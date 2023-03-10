@@ -2,7 +2,8 @@ import { Historique } from "./historique";
 import { RendezVous } from "./rendez-vous";
 import { Utilisateur } from "./utilisateur";
 
-export class Commercial extends Utilisateur{
+
+export class Commercial extends Utilisateur {
 
     rendezVousC!:RendezVous[] ;
     historiquesC!:Historique[] ;
