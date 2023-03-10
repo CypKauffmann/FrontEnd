@@ -1,43 +1,90 @@
-<!-- <h1>Gestion des utilisateurs</h1>
+<h1>Gestion des utilisateurs</h1>
 
  Afficher la liste des utilisateurs 
 
-
+<h2>Liste des Utilisateurs</h2>
 
 <table>
     <thead>
-      <tr>
-        <th>Role</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Age</th>
-        <th>Mail</th>
-        <th>Telephone</th>
-      </tr>
+        <tr>
+            <th>Role</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Age</th>
+            <th>Mail</th>
+            <th>Téléphone</th>
+            <th>Action</th>
+        </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let utilisateur of utilisateurs">
-        <td>{{ utilisateur.role }}</td>
-        <td>{{ utilisateur.username }}</td>
-        <td>{{ utilisateur.password }}</td>
-        <td>{{ utilisateur.nomPers }}</td>
-        <td>{{ utilisateur.prenomPers }}</td>
-        <td>{{ utilisateur.age }}</td>
-        <td>{{ utilisateur.email }}</td>
-        <td>{{ utilisateur.tel }}</td>
-        <td>
-          <!-- <button (click)="delete(utilisateur)">Supprimer</button> -->
-        </td>
+        <tr *ngFor="let utilisateur of utilisateurs">
+          <td [ngClass]="{ 'text-danger': !utilisateur.role }">{{ utilisateur.role ? utilisateur.role.nomRole : 'Pas de Role Affecté !' }}</td>
+          <td>{{ utilisateur.username }}</td>
+          <td (mouseenter)="showPassword = true" (mouseleave)="showPassword = false">
+            <span *ngIf="!showPassword">*****</span>
+            <span *ngIf="showPassword">{{ utilisateur.password }}</span>
+          </td>
+            <td>{{ utilisateur.nomPers }}</td>
+            <td>{{ utilisateur.prenomPers }}</td>
+            <td>{{ utilisateur.age }}</td>
+            <td>
+              <a href="mailto:{{ utilisateur.email }}">{{ utilisateur.email }}</a>
+            </td>            <td>{{ utilisateur.tel }}</td>
+       
+            <td><button (click)="delete(utilisateur.idPers)">Supprimer</button></td>
+
+            <td>
+              <ng-container *ngIf="!utilisateur.role">
+                <button (click)="assignParticipant(utilisateur.idPers)">Assigner Participant</button>
+                <button (click)="assignFormateur(utilisateur.idPers)">Assigner Formateur</button>
+                <button (click)="assignCommercial(utilisateur.idPers)">Assigner Commercial</button>
+              </ng-container>
+            </td>
+
+            
         </tr>
     </tbody>
-  </table>
--->
-
-
+</table>
 
 
 
 
 <!-- Ajouter un nouvel utilisateur -->
+
+
+<h2>Ajouter un nouvel utilisateur</h2>
+
+<form (submit)="ajouterUtilisateur()">
+  <div>
+    <label>Nom:</label>
+    <input type="text" name="nom" [(ngModel)]="nouvelUtilisateur.nomPers" required>
+  </div>
+  <div>
+    <label>Prénom:</label>
+    <input type="text" name="prenom" [(ngModel)]="nouvelUtilisateur.prenomPers" required>
+  </div>
+  <div>
+    <label>Age:</label>
+    <input type="number" name="age" [(ngModel)]="nouvelUtilisateur.age" required>
+  </div>
+  <div>
+    <label>Mail:</label>
+    <input type="email" name="email" [(ngModel)]="nouvelUtilisateur.email" required>
+  </div>
+  <div>
+    <label>Téléphone:</label>
+    <input type="tel" name="tel" [(ngModel)]="nouvelUtilisateur.tel" required>
+  </div>
+  <div>
+    <label>Nom d'utilisateur:</label>
+    <input type="text" name="username" [(ngModel)]="nouvelUtilisateur.username" required>
+  </div>
+  <div>
+    <label>Mot de passe:</label>
+    <input type="password" name="password" [(ngModel)]="nouvelUtilisateur.password" required>
+  </div>
+  <button type="submit">Ajouter</button>
+</form>
+
