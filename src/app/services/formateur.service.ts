@@ -42,5 +42,15 @@ export class FormateurService {
     return this.http.delete(`http://localhost:8015/api/formateurs/${id}`);
   }
 
+
+  
+  edit(formateur: Formateur) {
+    return this.http.put(`http://localhost:8015/api/formateurs`, formateur);
+}
+
+
+
+
+
 }
 

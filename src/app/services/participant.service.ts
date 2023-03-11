@@ -31,4 +31,10 @@ export class ParticipantService {
   }
 
 
+  edit(participant: Participant) {
+    return this.http.put(`http://localhost:8015/api/participants/`, participant);
+  }
+
+
+
 }

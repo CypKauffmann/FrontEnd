@@ -42,6 +42,10 @@ export class utilisateurService {
     return this.http.get(`http://localhost:8015/api/utilisateurs/assign/commercial/${idPers}`);
   }
   
+  edit(utilisateur: Utilisateur) {
+    return this.http.put(`http://localhost:8015/api/utilisateurs/`, utilisateur);
+  }
+
 
 
 
