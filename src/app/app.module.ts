@@ -15,9 +15,6 @@ import { CommercialComponent } from './composant/commercial/commercial.component
 @NgModule({
   declarations: [
     AppComponent,
-    GestionUtilisateurComponent,
-    GestionFormateurComponent,
-    GestionFormationComponent,
     ParticipantComponent,
     FormateurComponent,
     PersonneComponent,

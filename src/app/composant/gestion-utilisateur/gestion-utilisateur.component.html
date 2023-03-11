@@ -1,8 +1,89 @@
 <h1>Gestion des utilisateurs</h1>
 
- Afficher la liste des utilisateurs 
 
 <h2>Liste des Utilisateurs</h2>
+<form class="form-inline" (submit)="filterBySearchText()">
+  <div class="form-group">
+    <label for="search-input" class="sr-only">Rechercher</label>
+    <input type="text" class="form-control" id="search-input" placeholder="Rechercher..." [(ngModel)]="searchText" name="search">
+  </div>
+  <button type="submit" class="btn btn-primary ml-2">Rechercher</button>
+  <button type="button" class="btn btn-outline-secondary ml-2" (click)="filterByNoRole()">Filtrer par absence de rôle</button> 
+  <button type="button" class="btn btn-link ml-2" (click)="resetFilters()">Réinitialiser</button>
+</form>
+
+
+<br>
+
+
+<ng-container *ngIf="editingUser">
+  <h2>Modifier utilisateur</h2>
+  <form (submit)="submitEditForm()">
+    <label>Nom:</label>
+    <input type="text" [(ngModel)]="editingUser.nomPers" name="nomPers">
+    <label>Prénom:</label>
+    <input type="text" [(ngModel)]="editingUser.prenomPers" name="prenomPers">
+    <label>Age:</label>
+    <input type="number" [(ngModel)]="editingUser.age" name="age">
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="editingUser.email" name="email">
+    <label>Téléphone:</label>
+    <input type="tel" [(ngModel)]="editingUser.tel" name="tel">
+    <label>Pseudo:</label>
+    <input type="text" [(ngModel)]="editingUser.username" name="username">
+    <label>Mot de passe:</label>
+    <input type="password" [(ngModel)]="editingUser.password" name="password">
+    <button type="submit">Enregistrer</button>
+    <button type="button" (click)="cancelEditForm()">Annuler</button>
+  </form>
+</ng-container>
+
+<br>
+
+
+
+
+<button (click)="afficherFormulaire = true">Ajouter un nouvel utilisateur</button>
+
+<div *ngIf="afficherFormulaire">
+  <h2>Ajouter un nouvel utilisateur</h2>
+
+  <form (submit)="ajouterUtilisateur()">
+    <div>
+      <label>Nom:</label>
+      <input type="text" name="nom" [(ngModel)]="nouvelUtilisateur.nomPers" required>
+    </div>
+    <div>
+      <label>Prénom:</label>
+      <input type="text" name="prenom" [(ngModel)]="nouvelUtilisateur.prenomPers" required>
+    </div>
+    <div>
+      <label>Age:</label>
+      <input type="number" name="age" [(ngModel)]="nouvelUtilisateur.age" required>
+    </div>
+    <div>
+      <label>Mail:</label>
+      <input type="email" name="email" [(ngModel)]="nouvelUtilisateur.email" required>
+    </div>
+    <div>
+      <label>Téléphone:</label>
+      <input type="tel" name="tel" [(ngModel)]="nouvelUtilisateur.tel" required>
+    </div>
+    <div>
+      <label>Nom d'utilisateur:</label>
+      <input type="text" name="username" [(ngModel)]="nouvelUtilisateur.username" required>
+    </div>
+    <div>
+      <label>Mot de passe:</label>
+      <input type="password" name="password" [(ngModel)]="nouvelUtilisateur.password" required>
+    </div>
+    <button type="submit">Ajouter</button>
+    <button (click)="afficherFormulaire = false">Annuler</button>
+  </form>
+</div>
+
+
+<br>
 
 <table>
     <thead>
@@ -15,7 +96,10 @@
             <th>Age</th>
             <th>Mail</th>
             <th>Téléphone</th>
-            <th>Action</th>
+            <th>Supprimer utilisateur</th>
+            <th>Modification</th>
+            <th>Affectation</th>
+
         </tr>
     </thead>
     <tbody>
@@ -29,11 +113,16 @@
             <td>{{ utilisateur.nomPers }}</td>
             <td>{{ utilisateur.prenomPers }}</td>
             <td>{{ utilisateur.age }}</td>
+
             <td>
               <a href="mailto:{{ utilisateur.email }}">{{ utilisateur.email }}</a>
-            </td>            <td>{{ utilisateur.tel }}</td>
+            </td>            
+            
+            <td>{{ utilisateur.tel }}</td>
        
             <td><button (click)="delete(utilisateur.idPers)">Supprimer</button></td>
+            
+            <td><button (click)="showEditForm(utilisateur)">Modifier</button></td>
 
             <td>
               <ng-container *ngIf="!utilisateur.role">
@@ -49,42 +138,4 @@
 </table>
 
 
-
-
-<!-- Ajouter un nouvel utilisateur -->
-
-
-<h2>Ajouter un nouvel utilisateur</h2>
-
-<form (submit)="ajouterUtilisateur()">
-  <div>
-    <label>Nom:</label>
-    <input type="text" name="nom" [(ngModel)]="nouvelUtilisateur.nomPers" required>
-  </div>
-  <div>
-    <label>Prénom:</label>
-    <input type="text" name="prenom" [(ngModel)]="nouvelUtilisateur.prenomPers" required>
-  </div>
-  <div>
-    <label>Age:</label>
-    <input type="number" name="age" [(ngModel)]="nouvelUtilisateur.age" required>
-  </div>
-  <div>
-    <label>Mail:</label>
-    <input type="email" name="email" [(ngModel)]="nouvelUtilisateur.email" required>
-  </div>
-  <div>
-    <label>Téléphone:</label>
-    <input type="tel" name="tel" [(ngModel)]="nouvelUtilisateur.tel" required>
-  </div>
-  <div>
-    <label>Nom d'utilisateur:</label>
-    <input type="text" name="username" [(ngModel)]="nouvelUtilisateur.username" required>
-  </div>
-  <div>
-    <label>Mot de passe:</label>
-    <input type="password" name="password" [(ngModel)]="nouvelUtilisateur.password" required>
-  </div>
-  <button type="submit">Ajouter</button>
-</form>
 
