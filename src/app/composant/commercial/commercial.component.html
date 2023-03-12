@@ -1,29 +1,98 @@
-
-<h1>Bonjour (mettre le nom du commercial connecté)</h1>
-<h2>Espace Commercial</h2>
+<br>
+<h1 class="text-center">Bonjour (mettre le nom du commercial connecté)</h1>
+<h2 class="text-center">Espace Commercial</h2>
 
 <br>
 <hr width="75%">
 <br>
 
-<h3><em>Rendez-vous à venir</em></h3>
-<table>
+<div class="m-auto w-75">
+    <h3><em>Rendez-vous à venir</em></h3>
+    <table class="text-center  w-100">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Prospect</th>
+                <th>Commercial associé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rdv of rendezvous">
+                <th>{{rdv.idRdv}}</th>
+                <td>{{rdv.dateRdv | date:'dd/MM/yyyy'}}</td>
+                <td>{{rdv.dateRdv | date:'HH:mm'}}</td>
+                <td>{{rdv.personne.nomPers}} {{rdv.personne.prenomPers}}</td>
+                <td>{{rdv.commercial.nomPers}} {{rdv.commercial.prenomPers}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="supprimerRdv(rdv.idRdv)">Supprimer</button>
+                    <button class="btn btn-secondary ml-1" (click)="modifierRdv(rdv.idRdv)">Modifier</button>
+                    <br><button class="btn btn-info mt-1" (click)="ancreajoutHist(rdv.idRdv, rdv.personne.idPers)">Valider un historique</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br><br>
+
+<table id="formsAjout" class="m-auto">
     <tr>
-        <th>#</th>
-        <th>Date</th>
-        <th>Heure</th>
-        <th>Prospect</th>
-        <th>Commercial associé</th>
-        <th>Action</th>
-    </tr>
-    <tr *ngFor="let rdv of rendezvous">
-        <th>{{rdv.idRdv}}</th>
-        <td>{{rdv.dateRdv | date:'dd/MM/yyyy'}}</td>
-        <td>{{rdv.dateRdv | date:'HH:mm'}}</td>
-        <td>{{rdv.personne.nomPers}} {{rdv.personne.prenomPers}}</td>
-        <td>{{rdv.commercial.nomPers}} {{rdv.commercial.prenomPers}}</td>
-        <td><button (click)="supprimerRdv(rdv.idRdv)">Supprimer</button>
-        <button (click)="modifierRdv(rdv.idRdv)">Modifier</button></td>
+        <td class="formRdv">
+            <h3 id="ajoutRdv" [ngClass]="{ 'highlighted': highlight }" *ngIf="highlight==false ; else rdvProsp">
+                <em>Ajout/Modification de rendez-vous</em>
+            </h3>
+            <ng-template #rdvProsp>
+                <h3 id="ajoutRdv" [ngClass]="{ 'highlighted': highlight }">
+                    <em>Ajout d'un rendez-vous pour {{prospectAjoutRdv.nomPers}} {{prospectAjoutRdv.prenomPers}}</em>
+                </h3>
+            </ng-template>
+
+            <form (ngSubmit)="ajoutRdv()">
+                <label for="dateRdv" class="col-sm-2 col-form-label">Date </label>
+                <!-- <input name="dateRdv" type="datetime-local" [(ngModel)] ="rdv.dateRdv" class="form-control" placeholder="jj/mm/aaaa"/> -->
+                <input name="dateRdv" type="datetime-local" [ngModel]="rdv.dateRdv | date:'yyyy-MM-dd HH:mm'" (ngModelChange)="rdv.dateRdv=$event" class="form-control" placeholder="jj/mm/aaaa HH:mm"/>
+                <br>
+                <label for="idPropectRDV">Prospect </label>
+                <select class="form-control" name="idPropectRDV" [(ngModel)]="idProspect">
+                    <option [value]="null" disabled selected>--Choisir un prospect--</option>
+                    <option *ngFor="let prosp of prospects" [value]="prosp.idPers" >{{prosp.nomPers}} {{prosp.prenomPers}}</option>
+                </select>
+
+                <br><br>      
+                <button class="btn btn-secondary" type="submit" class="btn btn-primary mb-2">Ajouter/Modifier</button>
+            </form>
+        </td>
+
+        <td class="formHist">
+            <h3 id="ajoutHist" [ngClass]="{ 'highlighted2': highlight2 }" *ngIf="highlight2==false ; else histProsp">
+                <em>Validation d'un rendez-vous/Modification d'un historique</em>
+            </h3>
+            <ng-template #histProsp>
+                <h3 id="ajoutHist" [ngClass]="{ 'highlighted2': highlight2 }">
+                    <em>Validation d'un rendez-vous/Modification d'un historique pour {{prospectAjoutHist.nomPers}} {{prospectAjoutHist.prenomPers}}</em>
+                </h3>
+            </ng-template>
+
+            <form (ngSubmit)="ajoutHist()">
+                <label for="dateHist" class="col-sm-2 col-form-label">Date </label>
+                <input name="dateHist" type="datetime-local" [ngModel]="hist.dateHist | date:'yyyy-MM-dd HH:mm'" (ngModelChange)="hist.dateHist=$event" class="form-control" placeholder="jj/mm/aaaa HH:mm"/>
+                <br>
+                <label for="commentaire" class="col-sm-2 col-form-label">Commentaire </label>
+                <textarea name="commentaire" [(ngModel)]="hist.commentaire" class="form-control" placeholder="Texte..."></textarea>
+                <br>
+                <label for="idPropectHIST">Prospect </label>
+                <select class="form-control" name="idPropectHIST" [(ngModel)]="idProspectHIST">
+                    <option [value]="null" disabled selected>--Choisir un prospect--</option>
+                    <option *ngFor="let prosp of prospects" [value]="prosp.idPers" >{{prosp.nomPers}} {{prosp.prenomPers}}</option>
+                </select>
+
+                <br><br>      
+                <button class="btn btn-secondary" type="submit" class="btn btn-primary mb-2">Valider/Modifier</button>
+            </form>
+        </td>
     </tr>
 </table>
 
@@ -31,19 +100,97 @@
 <hr width="75%">
 <br>
 
-<h1>Ajout/Modification de rendez-vous</h1>
+<div class="ml-5 mr-5">
+    <h3><em>Liste des prospects</em></h3>
 
-<form (ngSubmit)="ajoutRdv()">
-    <label for="dateRdv" class="col-sm-2 col-form-label">Date du nouveau rendez-vous </label>
-    <input name="dateRdv" type="datetime-local" [(ngModel)] ="rdv.dateRdv" class="form-control" placeholder="jj/mm/aaaa"/>
-   <!-- <input name="dateRdv" type="datetime-local" [ngModel]="rdv.dateRdv | date:'yyyy-MM-dd HH:mm'" (ngModelChange)="rdv.dateRdv=$event" class="form-control" placeholder="jj/mm/aaaa"/>-->
-    <br>
-    <label for="idPropect">Prospect </label>
-    <select class="form-control" name="idPropect" [(ngModel)]="idProspect">
-        <option [value]="null">Choisir un prospect</option>
-        <option *ngFor="let prosp of prospects" [value]="prosp.idPers" >{{prosp.nomPers}} {{prosp.prenomPers}}</option>
-    </select>
+    <table class="text-center w-100">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Âge</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Actions</th>
+                <th>Liste des rendez-vous et Historique</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prosp of prospects">
+                <th>{{prosp.idPers}}</th>
+                <td>{{prosp.nomPers}}</td>
+                <td>{{prosp.prenomPers}}</td>
+                <td>{{prosp.age}}</td>
+                <td>{{prosp.tel}}</td>
 
-    <br><br>      
-    <button type="submit" class="btn btn-primary mb-2">Ajouter/Modifier</button>
-</form>
+                <td><a href="mailto:{{prosp.email}}">{{prosp.email}}</a></td>
+                <td><button class="btn btn-danger" (click)="supprimerPropsect(prosp.idPers)">Supprimer</button>
+                <button class="btn btn-secondary ml-1" (click)="modifierProspect(prosp.idPers)">Modifier</button>
+                <br><button class="btn btn-success mt-1" (click)="ancreajoutRdv(prosp.idPers)">Ajouter un rendez-vous</button>
+                </td>
+
+                <td>
+                    <a class="btn btn-primary" data-toggle="collapse" [href]="'#rdvRecap'+prosp.idPers" role="button">Voir les rendez-vous</a>
+                    <a class="btn btn-primary ml-1" data-toggle="collapse" [href]="'#histRecap'+prosp.idPers" role="button">Voir l'historique <small>(lien pour modifier)</small></a>
+                    <div class="row">
+                        <div class="col">
+                            <div class="collapse multi-collapse" [id]="'rdvRecap'+prosp.idPers">
+                                <div class="card card-body">
+                                    <ul *ngFor="let rdv of rendezvous" class="list-group">
+                                        <li *ngIf="prosp.idPers === rdv.personne.idPers" class="list-group-item">
+                                            {{rdv.dateRdv  | date:'dd/MM/yyyy'}} à {{rdv.dateRdv  | date:'HH:mm'}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="collapse multi-collapse" [id]="'histRecap'+prosp.idPers">
+                                <div class="card card-body">
+                                    <ul *ngFor="let histo of historiques" class="list-group">
+                                        <li *ngIf="prosp.idPers === histo.personne.idPers" class="list-group-item">
+                                            {{histo.dateHist  | date:'dd/MM/yyyy'}} à {{histo.dateHist | date:'HH:mm'}} 
+                                            <br>
+                                            <button type="button" class="btn btn-link" (click)="modifierHist(histo.idHist)">
+                                                {{histo.commentaire}}
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br><br>
+
+<div class="m-auto w-75">
+    <h3 id="ajoutProsp" [ngClass]="{ 'highlighted3': highlight3 }">
+        <em>Ajout/Modification de prospect</em>
+    </h3>
+
+    <form (ngSubmit)="ajoutProspect()">
+        <label for="nom" class="col-sm-2 col-form-label">Nom </label>
+        <input name="nom" [(ngModel)] ="prospect.nomPers" class="form-control" placeholder="Dupont"/>
+        <br>
+        <label for="prenom" class="col-sm-2 col-form-label">Prénom </label>
+        <input name="prenom" [(ngModel)] ="prospect.prenomPers" class="form-control" placeholder="Pierre"/>
+        <br>
+        <label for="age" class="col-sm-2 col-form-label">Âge </label>
+        <input name="age" type="number" [(ngModel)] ="prospect.age" class="form-control" placeholder="18"/>
+        <br>
+        <label for="tel" class="col-sm-2 col-form-label">Téléphonne </label>
+        <input name="tel" [(ngModel)] ="prospect.tel" class="form-control" placeholder="-- -- -- -- --"/>
+        <br>
+        <label for="mail" class="col-sm-2 col-form-label">Adresse mail </label>
+        <input name="mail" [(ngModel)] ="prospect.email" class="form-control" placeholder="adresse@mail.fr"/>               
+
+        <br><br>      
+        <button type="submit" class="btn btn-primary">Ajouter/Modifier</button>
+    </form>
+</div>

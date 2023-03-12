@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { EnteteComponent } from './composant/entete/entete.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CommercialComponent,
     GestionUtilisateurComponent,
     GestionFormateurComponent,
-    GestionFormationComponent
+    GestionFormationComponent,
+    EnteteComponent
   ],
   imports: [
     BrowserModule,
