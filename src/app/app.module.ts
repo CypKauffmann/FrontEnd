@@ -11,6 +11,7 @@ import { GestionFormationComponent } from './composant/gestion-formation/gestion
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
+import { EnteteComponent } from './composant/entete/entete.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommercialComponent } from './composant/commercial/commercial.component
     CommercialComponent,
     GestionUtilisateurComponent,
     GestionFormateurComponent,
-    GestionFormationComponent
+    GestionFormationComponent,
+    EnteteComponent
   ],
   imports: [
     BrowserModule,
