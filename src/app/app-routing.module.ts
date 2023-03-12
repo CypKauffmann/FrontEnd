@@ -9,8 +9,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/gestion-utilisateur.component';
-import { CommercialComponent } from './composant/commercial/commercial.component';
 import { GestionFormationComponent } from './composant/gestion-formation/gestion-formation.component';
+import { CommercialComponent } from './composant/commercial/commercial.component';
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent},

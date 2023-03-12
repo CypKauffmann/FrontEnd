@@ -1,1 +1,29 @@
-<p>gestion-formation works!</p>
+<div *ngIf="formations && formations.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de la formation</th>
+          <th>Date de début</th>
+          <th>Date de fin</th>
+          <th>Prix</th>
+          <th>Durée</th>
+          <th>Participants</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formation of formations">
+          <td>{{ formation.nomForm }}</td>
+          <td>{{ formation.dateDebut }}</td>
+          <td>{{ formation.dateFin }}</td>
+          <td>{{ formation.prix }} €</td>
+          <td>{{ formation.duree }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let participant of formation.participants">{{ participant.username }}</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -16,9 +16,6 @@ import { EnteteComponent } from './composant/entete/entete.component';
 @NgModule({
   declarations: [
     AppComponent,
-    GestionUtilisateurComponent,
-    GestionFormateurComponent,
-    GestionFormationComponent,
     ParticipantComponent,
     FormateurComponent,
     PersonneComponent,
