@@ -35,6 +35,29 @@ export class ParticipantService {
     return this.http.put(`http://localhost:8015/api/participants/`, participant);
   }
 
+  getParticipantsWithoutFormation()  {
+    return this.http.get<Participant[]>('//localhost:8015/api/participants-sans-formation');
+  }
+
+  addParticipantToFormation(idFormation: number, idParticipant: number) {
+    const url = `http://localhost:8015/api/participants/formations/${idFormation}/participants/${idParticipant}`;
+    return this.http.post<string>(url, null);
+  }
 
 
+  removeParticipantFromFormation(idFormation: number, idParticipant: number) {
+    const url = `http://localhost:8015/api/participants/formations/${idFormation}/participants/${idParticipant}`;
+    return this.http.delete<string>(url);
+
+  }
+
+
+
+
+
+
+
+
+
+  
 }

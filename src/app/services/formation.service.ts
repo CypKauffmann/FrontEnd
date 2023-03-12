@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Formation } from '../models/formation';
+import { Participant } from '../models/participant';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,11 @@ export class formationService {
     return this.http.get<Formation[]>('http://localhost:8015/api/formations');
   }
  
-
   add(utilisateur: Formation) {
-    console.log("service "+utilisateur.nomForm)
-    return this.http.post('http://localhost:8015/api/formations', Formation);
+    console.log("formation ajoutée : ", utilisateur);
+    return this.http.post('http://localhost:8015/api/formations', utilisateur);
   }
+  
 
 
   delete(id: number) {
@@ -24,4 +25,12 @@ export class formationService {
   }
 
  
+  getAllFormationsWithParticipantsAndFormateurs() {
+    return this.http.get<Formation[]>('//localhost:8015/api/participants-formateurs');
+  }
+
+  
+
+
+
 }

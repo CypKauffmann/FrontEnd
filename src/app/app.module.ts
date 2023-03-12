@@ -11,6 +11,7 @@ import { GestionFormationComponent } from './composant/gestion-formation/gestion
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { EnteteComponent } from './composant/entete/entete.component';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EnteteComponent } from './composant/entete/entete.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
