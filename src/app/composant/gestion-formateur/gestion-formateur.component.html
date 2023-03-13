@@ -1,1 +1,45 @@
-<p>gestion-formateur works!</p>
+<div *ngIf="formateurs && formateurs.length > 0">
+    <h2>Liste des formateurs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Email</th>
+          <th>Telephone</th>
+          <th>Formations et Participants</th>
+          <th>Affecter à une formation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formateur of formateurs">
+          <td>{{ formateur.nomPers }}</td>
+          <td>{{ formateur.prenomPers }}</td>
+          <td>
+            <a href="mailto:{{formateur.email}}" target="_blank">{{formateur.email}}</a>
+          </td>
+          <td>{{ formateur.tel }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let formation of formateur.formations">
+                {{ formation.nomForm }} :
+                <ul>
+                  <li *ngFor="let participant of formation.participants">
+                    <a href="mailto:{{ participant.email }}">{{ participant.nomPers }} {{ participant.prenomPers }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <select [(ngModel)]="selectedFormationIds3[formateurs.indexOf(formateur)]">
+              <option *ngFor="let formation of formations" [value]="formation.idForm">{{ formation.nomForm }}</option>
+            </select>
+            <button (click)="addFormateurToFormation(selectedFormationIds3[formateurs.indexOf(formateur)], formateur.idPers)">Affecter</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
