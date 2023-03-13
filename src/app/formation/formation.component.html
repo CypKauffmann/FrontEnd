@@ -1,0 +1,48 @@
+<h1>Espace formation</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom Formation</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>durée</th>
+      <th>prix</th>
+      <th>Détails des paiements</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let formation of formations">
+      <td>{{ formation.idForm }}</td>
+      <td>{{ formation.nomForm }}</td>
+      <td>{{ formation.dateDebut | date }}</td>
+      <td>{{ formation.dateFin | date }}</td>
+      <td>{{ formation.duree }} mois</td>
+      <td>{{ formation.prix }} €</td>
+      <td>
+        <table>
+          <thead>
+            <tr>
+              <th>Date de paiement</th>
+              <th>Type de paiement</th>
+              <th>Montant total</th>
+              <th>Déjà réglé</th>
+              <th>A rembourser</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let paiement of formation.paiements">
+              <td>{{ paiement.datePaiement | date }}</td>
+              <td>{{ paiement.typePaiement }}</td>
+              <td>{{ paiement.montantTot }} €</td>
+              <td>{{ paiement.dejaRegler }} €</td>
+              <td>{{ paiement.aRembourser }} €</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

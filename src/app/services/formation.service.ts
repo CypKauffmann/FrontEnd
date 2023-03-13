@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Formation } from '../models/formation';
+import { Paiement } from '../models/paiement';
 import { Participant } from '../models/participant';
 
 @Injectable({
@@ -13,6 +14,18 @@ export class formationService {
     return this.http.get<Formation[]>('http://localhost:8015/api/formations');
   }
  
+  getFormationsWithPaiements(idForm:number)
+  {
+  
+    return this.http.get<Formation[]>('http://localhost:8015/api/formations/paiements/'+idForm);
+   
+  }
+
+  getPaiementsByFormationId(idForm: number)
+  {
+    return this.http.get<Paiement[]>(`http://localhost:8015/api/formations/${idForm}/paiements/`);
+  }
+
   add(utilisateur: Formation) {
     console.log("formation ajoutée : ", utilisateur);
     return this.http.post('http://localhost:8015/api/formations', utilisateur);
@@ -30,7 +43,5 @@ export class formationService {
   }
 
   
-
-
 
 }

@@ -11,12 +11,12 @@ export class Paiement {
     datePaiement!:Date ;
 
     formations!:Formation[] ;
-    participants!:Participant[] ;
+    participant!:Participant ;
 
 
     constructor(idPaie?:number, aRembourser?:number, dejaRegler?:number, montantTot?:number,
         typePaiement?:string, datePaiement?:Date,
-        formations?:Formation[], participants?:Participant[])
+        formations?:Formation[], participant?:Participant)
         {
             if(idPaie)
             this.idPaie = idPaie
@@ -32,7 +32,7 @@ export class Paiement {
             this.datePaiement = datePaiement
             if(formations)
             this.formations = formations
-            if(participants)
-            this.participants = participants
+            if(participant)
+            this.participant = participant
         }
 }
