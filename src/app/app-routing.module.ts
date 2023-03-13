@@ -10,13 +10,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/gestion-utilisateur.component';
 import { GestionFormationComponent } from './composant/gestion-formation/gestion-formation.component';
+import { GestionFormateurComponent } from './composant/gestion-formateur/gestion-formateur.component';
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent},
   {path:'afficherFormateurs', component:FormateurComponent},
   {path:'afficherParticipants', component:ParticipantComponent},
   {path:'GestionUtilisateur', component: GestionUtilisateurComponent},
-  {path:'GestionFormation', component: GestionFormationComponent}
+  {path:'GestionFormation', component: GestionFormationComponent},
+  {path:'GestionFormateur', component: GestionFormateurComponent}
+
 ];
 
 @NgModule({

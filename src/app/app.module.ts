@@ -11,7 +11,6 @@ import { GestionFormationComponent } from './composant/gestion-formation/gestion
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
-import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -34,7 +34,7 @@ export class GestionFormationComponent {
     private formationService: formationService,
     private participantService: ParticipantService,
     private formateurService: FormateurService,
-    private router: Router // <-- Ajouter cette ligne
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
@@ -83,16 +83,19 @@ export class GestionFormationComponent {
       .addParticipantToFormation(idFormation, idParticipant)
       .subscribe(
         (data) => {
-          // Mettre à jour les données de l'application après l'affectation
-          this.getAllFormationsWithParticipantsAndFormateurs();
-          this.getParticipantsWithoutFormation();
+        
           // Définir la variable hasAffectation sur true pour masquer les formations affectées
           this.hasAffectation = true;
+            // Mettre à jour les données de l'application après l'affectation
+            this.getAllFormationsWithParticipantsAndFormateurs();
+            this.getParticipantsWithoutFormation();
+            this.getAllParticipants();
         },
         (error) => {
           console.log(error);
           this.getAllFormationsWithParticipantsAndFormateurs();
           this.getParticipantsWithoutFormation();
+          this.getAllParticipants();
         }
       );
   }
@@ -107,9 +110,13 @@ export class GestionFormationComponent {
         this.formation = new Formation();
         this.getAllFormationsWithParticipantsAndFormateurs();
         this.getParticipantsWithoutFormation();
+        this.getAllParticipants();
       },
       (error) => {
         console.log(error);
+        this.getAllFormationsWithParticipantsAndFormateurs();
+        this.getParticipantsWithoutFormation();
+        this.getAllParticipants();
       }
     );
   }
@@ -148,9 +155,13 @@ updateDuree() {
       (data) => {
         this.getAllFormationsWithParticipantsAndFormateurs();
         this.getParticipantsWithoutFormation();
+        this.getAllParticipants();
       },
       (error) => {
         console.log(error);
+        this.getAllFormationsWithParticipantsAndFormateurs();
+        this.getParticipantsWithoutFormation();
+        this.getAllParticipants();
       }
     );
   }
@@ -160,12 +171,13 @@ updateDuree() {
       (data) => {
         this.getAllFormationsWithParticipantsAndFormateurs();
         this.getParticipantsWithoutFormation();
+        this.getAllParticipants();
       },
       (error) => {
         console.log(error);
         this.getAllFormationsWithParticipantsAndFormateurs();
         this.getParticipantsWithoutFormation();
-      }
+        this.getAllParticipants(); }
     );
   }
 
