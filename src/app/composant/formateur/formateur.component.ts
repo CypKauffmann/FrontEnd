@@ -23,24 +23,38 @@ export class FormateurComponent implements OnInit{
   }
 
     // déclaration variables
-    formateur!:Formateur;
+   
+    formateur!:Formateur; // TODO: Inject the current formateur
     formateurs!:Formateur[];
     formations!:Formation[];
     participants!:Participant[];
     participant!:Participant;
 
   ngOnInit(): void {
-    
     this.formateur= new Formateur();
-
+    
     this.afficherAll();
+    
 
   }
 
   afficherAll()
   {
     this.formateurService.getAll().subscribe(
-      response=>this.formateurs=response
+      response=>
+      {
+        this.formateurs=response
+        for(let form of this.formateurs)
+        {
+          for(let f of form.formations)
+        {
+          this.formateurService.getParticipants(f.idForm).subscribe(
+            response=>f.participants=response
+          )
+        }
+        }
+        
+      }
     )
   }
   
@@ -66,6 +80,22 @@ export class FormateurComponent implements OnInit{
     response=>this.formateur=response
   )
  }
+/*
+AfficherParticipants() 
+{
+  this.formateurService.getParticipants()
+    .subscribe(
+      formations => 
+      {
+        this.formations = formations
+        for(let f of this.formations)
+        {
+          this.formateurService.getParticipants(f.idForm).subscribe(
+            response=>f.participants=response
+          )
+        }
+      });
+  }*/
 
 
 }

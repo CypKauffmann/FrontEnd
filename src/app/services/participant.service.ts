@@ -17,7 +17,7 @@ export class ParticipantService {
   }
 
   getById(id: number) {
-    return this.http.get<Participant>(`http://localhost:8015/api/participants${id}`);
+    return this.http.get<Participant>(`http://localhost:8015/api/participants/${id}`);
   }
 
 

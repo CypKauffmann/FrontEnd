@@ -5,59 +5,55 @@
 <table class="table">
     <thead>
         <tr>
+            
+            <th>Infos Formateur</th>
             <th>Username</th>
-            <th>Utilisateur Formateur</th>
             <th>Formations</th>
             
-           
         </tr>
-     </thead>
+    </thead>
  
-  <tbody>
-    <tr *ngFor="let formateur of formateurs">
-        <td>{{ formateur.username }} </td>
-        <td>
-            {{ formateur.nomPers }} 
-            {{ formateur.prenomPers }} 
-            {{ formateur.age }} 
-            
-        </td>
-      
-        <td>
-        <table>
-            <thead>     
-                <tr>
-                    <th>Nom de la formation</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Prix</th>
-                    <th>Durée</th>
-                    <th>Participants</th>
-                </tr>
-             
-            </thead>
-
-            <tbody>
-                
-                <tr *ngFor="let formation of formateur.formations">
-                    <td> {{ formation.nomForm }} </td>
-                    <td>{{ formation.dateDebut }}</td> 
-                    <td>{{ formation.dateFin }}</td> 
-                    <td>{{ formation.prix }} € </td>
-                    <td>{{ formation.duree }} mois</td>
-                    <td>
-                       
-                        <tr *ngFor="let participant of formation.participants">
-                            <td> {{participant.username}}</td>
+    <tbody>
+        <tr *ngFor="let formateur of formateurs">
+            <td>
+                {{ formateur.nomPers }} 
+                {{ formateur.prenomPers }} 
+                {{ formateur.age }} 
+            </td>
+            <td>{{ formateur.username }} </td>
+            <td>
+                <table>
+                    <thead>     
+                        <tr>
+                            <th>Nom de la formation</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Prix</th>
+                            <th>Durée</th>
+                            <th>Participants</th>
                         </tr>
-                         
-                       
-                      </td>
-                </tr>
-            </tbody>
-         
-        </table>
-      </td>
-      </tr>
-      </tbody>
-    </table>
+                    
+                    </thead>
+
+                    <tbody>
+        
+                        <tr *ngFor="let formation of formateur.formations">
+                            <td> {{ formation.nomForm }} </td>
+                            <td>{{ formation.dateDebut }}</td> 
+                            <td>{{ formation.dateFin }}</td> 
+                            <td>{{ formation.prix }} € </td>
+                            <td>{{ formation.duree }} mois</td>
+                            <td>
+                                <ul>
+                                <li *ngFor="let participant of formation.participants">{{ participant.nomPers }} {{ participant.prenomPers }}</li>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
