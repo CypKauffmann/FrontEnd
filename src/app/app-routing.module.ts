@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/gestion-utilisateur.component';
 import { GestionFormationComponent } from './composant/gestion-formation/gestion-formation.component';
 import { CommercialComponent } from './composant/commercial/commercial.component';
+import { FormationComponent } from './formation/formation.component';
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'GestionUtilisateur', component: GestionUtilisateurComponent},
   {path:'GestionFormation', component: GestionFormationComponent},
   {path:'afficherEspaceCommercial', component: CommercialComponent},
+  {path:'afficherFormations', component: FormationComponent}
 
 ];
 

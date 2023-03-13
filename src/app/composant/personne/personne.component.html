@@ -1,40 +1,93 @@
-<h1>Espace personnes </h1>
+<!--<h1>Espace personnes </h1>
 
 
-<form #f= "ngForm" (ngSubmit)="ajouter(f)">
-   
-    Nom : <input type="text" name="nom" [(ngModel)]="personne.nomPers">
-    Prenom : <input type="text" name="prenom" [(ngModel)]="personne.prenomPers">
-    Age : <input type="text" name="age" [(ngModel)]="personne.age">
-    email : <input type="text" name="email" [(ngModel)]="personne.email">
-    Tel : <input type="text" name="tel" [(ngModel)]="personne.tel">
+   Formulaire d'ajout/modification de personne -->
+  
+   <!--<form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
+    <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
+    <label>Nom:</label>
+    <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
+    <label>Prénom:</label>
+    <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
+    <label>Age:</label>
+    <input type="number" name="age" [(ngModel)]="personne.age" required>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="personne.email" required>
+    <label>Teléphone:</label>
+    <input type="text" name="tel" [(ngModel)]="personne.tel" required>
+    <button type="submit">{{editingUser ? 'Modifier' : 'Ajouter'}}</button>
+    <button type="button" (click)="editingUser = null; personneForm.reset()">Annuler</button> 
+  </form><br>
 
-    <button type="submit">Ajouter</button>
-</form>
+Affichage de la liste des personnes -->
 
+<!--<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Tel</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let personne of personnes">
+        <td>{{personne.idPers}}</td>
+        <td>{{personne.nomPers}}</td>
+        <td>{{personne.prenomPers}}</td>
+        <td>{{personne.age}}</td>
+        <td>{{personne.email}}</td>
+        <td>{{personne.tel}}</td>
+        <td>
+          <button (click)="selectionnerPersonne(personne)">Modifier</button>
+          <button (click)="supprimer(personne.idPers)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>-->
+  <h1>Espace personnes </h1>
 
-<table class="table">
-    <tr>
-        <td>Nom</td>
-        <td>Prenom</td>
-        <td>Age</td>
-        <td>email</td>
-        <td>Tel</td> 
-        <td>Action</td>
-        <td>Action1</td>
-        <td>Action2</td>
-    </tr>
-
-    <tr *ngFor="let pers of personnes">
-            <td> {{pers.nomPers}}</td>
-            <td> {{pers.prenomPers}}</td>
-            <td> {{pers.age}}</td>
-            <td> {{pers.email}}</td>
-            <td>{{pers.tel}}</td>
-            <td><button (click)="supprimer(pers.idPers)">Supprimer</button></td>
-            <td><button (click)="afficherAll()">Afficher</button></td>
-            <td><button (click)="modifier(pers.idPers)">modifier</button></td>
-    
-    </tr>
-    
-</table>   
+ 
+<!-- <div *ngIf="utilisateurConnecte">
+    <p>Bienvenue {{utilisateurConnecte.username}} !</p>
+  </div>
+-->
+  <!-- Formulaire d'ajout/modification de personne -->
+  <form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
+    <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
+    <label>Nom:</label>
+    <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
+    <label>Prénom:</label>
+    <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
+    <label>Age:</label>
+    <input type="number" name="age" [(ngModel)]="personne.age" required>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="personne.email" required>
+    <label>Teléphone:</label>
+    <input type="text" name="tel" [(ngModel)]="personne.tel" required>
+    <button type="submit">{{editingUser ? 'Modifier' : 'Ajouter'}}</button>
+    <button type="button" (click)="editingUser = null; personneForm.reset()">Annuler</button>
+  </form><br>
+  
+  <!-- Affichage de la liste des personnes -->
+  
+    <tbody>
+      <!--<div *ngIf="utilisateurConnecte">-->
+      <tr *ngFor="let personne of personnes">
+        <td>{{personne.idPers}}</td>
+        <td>{{personne.nomPers}}</td>
+        <td>{{personne.prenomPers}}</td>
+        <td>{{personne.age}}</td>
+        <td>{{personne.email}}</td>
+        <td>{{personne.tel}}</td>
+        <td>
+          <button (click)="selectionnerPersonne(personne)">Modifier</button>
+          <button (click)="supprimer(personne.idPers)">Supprimer</button>
+        </td>
+      </tr>
+       <!--</div> -->
+    </tbody>
+ 

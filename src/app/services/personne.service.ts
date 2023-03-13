@@ -36,4 +36,11 @@ export class personneService {
   delete(id: number) {
     return this.http.delete(`http://localhost:8015/api/personnes/${id}`);
   }
+  
+  update(id: number, personne: Personne)
+  {
+    return this.http.put<Personne>(`http://localhost:8015/api/personnes/${id}`,personne);
+    
+  }
+  
 }
