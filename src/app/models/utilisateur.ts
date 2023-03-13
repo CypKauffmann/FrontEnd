@@ -1,14 +1,12 @@
-import { Personne } from "./personne";
-import { Role } from "./role";
+import { Personne } from './personne';
+import { Role } from './role';
 
 export class Utilisateur extends Personne {
 
-    username!:string ;
-    password!:string ;
-
-    role!:Role ;
-
-
+  username!: string;
+  password!: string;
+  role!: Role;
+  
     constructor(username?:string, password?:string, role?:Role)
     {
         super()

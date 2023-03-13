@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/gestion-utilisateur.component';
@@ -13,6 +12,7 @@ import { ParticipantComponent } from './composant/participant/participant.compon
 import { FormateurComponent } from './composant/formateur/formateur.component';
 import { PersonneComponent } from './composant/personne/personne.component';
 import { FormationComponent } from './formation/formation.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { FormationComponent } from './formation/formation.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
