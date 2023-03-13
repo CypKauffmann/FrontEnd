@@ -7,6 +7,7 @@ import { Personne } from 'src/app/models/personne';
 import { RendezVous } from 'src/app/models/rendez-vous';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { HistoriqueService } from 'src/app/services/historique.service';
+import { PaiementService } from 'src/app/services/paiement.service';
 import { personneService } from 'src/app/services/personne.service';
 import { RendezvousService } from 'src/app/services/rendezvous.service';
 import { utilisateurService } from 'src/app/services/utilisateur.service';
@@ -20,6 +21,7 @@ import { utilisateurService } from 'src/app/services/utilisateur.service';
 export class CommercialComponent implements OnInit {
 
   constructor(private rdvservice:RendezvousService, private persservice:personneService,
+    private paieservice:PaiementService,
     private utservice:utilisateurService, private historiqueservice:HistoriqueService,
     private router:Router, private route:ActivatedRoute,
     private elRef: ElementRef)
@@ -338,6 +340,13 @@ export class CommercialComponent implements OnInit {
       this.highlight2 = !this.highlight2;
     }
   }
+
+
+
+
+  ////////////////////////////////////Participant et paiement//////////////////////////////////////////
+
+  
 
 
 }

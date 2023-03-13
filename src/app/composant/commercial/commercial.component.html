@@ -184,7 +184,7 @@
         <label for="age" class="col-sm-2 col-form-label">Âge </label>
         <input name="age" type="number" [(ngModel)] ="prospect.age" class="form-control" placeholder="18"/>
         <br>
-        <label for="tel" class="col-sm-2 col-form-label">Téléphonne </label>
+        <label for="tel" class="col-sm-2 col-form-label">Téléphone </label>
         <input name="tel" [(ngModel)] ="prospect.tel" class="form-control" placeholder="-- -- -- -- --"/>
         <br>
         <label for="mail" class="col-sm-2 col-form-label">Adresse mail </label>
@@ -193,4 +193,34 @@
         <br><br>      
         <button type="submit" class="btn btn-primary">Ajouter/Modifier</button>
     </form>
+</div>
+
+
+<br>
+<hr width="75%">
+<br>
+
+<div class="ml-5 mr-5">
+    <h3><em>Liste des participants affilié au commercial</em></h3>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Montant total à payer</th>
+            <th>Montant à payer</th>
+            <th>Montant déjà payé</th>
+            <th>Type de paiement</th>
+        </tr>
+        <tr *ngFor="">
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 </div>
