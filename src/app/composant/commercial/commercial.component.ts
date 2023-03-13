@@ -400,9 +400,12 @@ export class CommercialComponent implements OnInit {
               this.parti = response
               let email = response.email
               let sujet = "Relance pour paiement de formation"
-              let body = "Bonjour, Ceci est une mail de relance car la totalité du montant de formation n'a pas été encore payé. Rendez-vous sur le site du centre de formation afin de voir les détails. Cordialement, ${response.commercial.nomPers} ${response.commercial.prenomPers}(le commercial)"
+              let formation =  this.paie.formations[1].nomForm;
+              let sommeAPayer = this.paie.montantTot - this.paie.dejaRegler; 
+              let utilisateur : Utilisateur = JSON.parse(sessionStorage.getItem('user') ?? "");
+              let body = `Bonjour ${response.nomPers} ${response.prenomPers},\n\nCeci est un mail de relance pour le paiement de la formation "${formation}". Il vous reste ${sommeAPayer} à payer. \n\nVeuillez effectuer le paiement dès que possible.\n\nCordialement,\n${utilisateur.nomPers} ${utilisateur.prenomPers} (le commercial)`;
               let mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(body)}`;
-
+  
               window.location.href = mailtoUrl;
             }
           );
@@ -410,6 +413,7 @@ export class CommercialComponent implements OnInit {
       }
     );
   }
-
+  
+  
 
 }
