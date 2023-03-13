@@ -1,93 +1,35 @@
-<!--<h1>Espace personnes </h1>
+<h1>Espace personnes </h1>
 
+<!-- Formulaire d'ajout/modification de personne -->
+<form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
+  <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
+  <label>Nom:</label>
+  <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
+  <label>Prénom:</label>
+  <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
+  <label>Age:</label>
+  <input type="number" name="age" [(ngModel)]="personne.age" required>
+  <label>Email:</label>
+  <input type="text" name="email" [(ngModel)]="personne.email" required>
+  <label>Teléphone:</label>
+  <input type="text" name="tel" [(ngModel)]="personne.tel" required>
+  <button type="submit">{{editingUser ? 'Modifier' : 'Ajouter'}}</button>
+  <button type="button" (click)="editingUser = null; personneForm.reset()">Annuler</button>
+</form><br>
 
-   Formulaire d'ajout/modification de personne -->
-  
-   <!--<form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
-    <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
-    <label>Nom:</label>
-    <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
-    <label>Prénom:</label>
-    <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
-    <label>Age:</label>
-    <input type="number" name="age" [(ngModel)]="personne.age" required>
-    <label>Email:</label>
-    <input type="text" name="email" [(ngModel)]="personne.email" required>
-    <label>Teléphone:</label>
-    <input type="text" name="tel" [(ngModel)]="personne.tel" required>
-    <button type="submit">{{editingUser ? 'Modifier' : 'Ajouter'}}</button>
-    <button type="button" (click)="editingUser = null; personneForm.reset()">Annuler</button> 
-  </form><br>
+<!-- Affichage de la liste des personnes -->
 
-Affichage de la liste des personnes -->
-
-<!--<table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Tel</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let personne of personnes">
-        <td>{{personne.idPers}}</td>
-        <td>{{personne.nomPers}}</td>
-        <td>{{personne.prenomPers}}</td>
-        <td>{{personne.age}}</td>
-        <td>{{personne.email}}</td>
-        <td>{{personne.tel}}</td>
-        <td>
-          <button (click)="selectionnerPersonne(personne)">Modifier</button>
-          <button (click)="supprimer(personne.idPers)">Supprimer</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>-->
-  <h1>Espace personnes </h1>
-
- 
-<!-- <div *ngIf="utilisateurConnecte">
-    <p>Bienvenue {{utilisateurConnecte.username}} !</p>
-  </div>
--->
-  <!-- Formulaire d'ajout/modification de personne -->
-  <form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
-    <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
-    <label>Nom:</label>
-    <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
-    <label>Prénom:</label>
-    <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
-    <label>Age:</label>
-    <input type="number" name="age" [(ngModel)]="personne.age" required>
-    <label>Email:</label>
-    <input type="text" name="email" [(ngModel)]="personne.email" required>
-    <label>Teléphone:</label>
-    <input type="text" name="tel" [(ngModel)]="personne.tel" required>
-    <button type="submit">{{editingUser ? 'Modifier' : 'Ajouter'}}</button>
-    <button type="button" (click)="editingUser = null; personneForm.reset()">Annuler</button>
-  </form><br>
-  
-  <!-- Affichage de la liste des personnes -->
-  
-    <tbody>
-      <!--<div *ngIf="utilisateurConnecte">-->
-      <tr *ngFor="let personne of personnes">
-        <td>{{personne.idPers}}</td>
-        <td>{{personne.nomPers}}</td>
-        <td>{{personne.prenomPers}}</td>
-        <td>{{personne.age}}</td>
-        <td>{{personne.email}}</td>
-        <td>{{personne.tel}}</td>
-        <td>
-          <button (click)="selectionnerPersonne(personne)">Modifier</button>
-          <button (click)="supprimer(personne.idPers)">Supprimer</button>
-        </td>
-      </tr>
-       <!--</div> -->
-    </tbody>
- 
+  <ul>
+    <li *ngFor="let personne of personnes">
+      <div>ID : {{personne.idPers}}</div>
+      <div>Nom : {{personne.nomPers}}</div>
+      <div>Prénom : {{personne.prenomPers}}</div>
+      <div>Age : {{personne.age}}</div>
+      <div>Email : {{personne.email}}</div>
+      <div>Tel : {{personne.tel}}</div>
+      <div>
+        <button (click)="selectionnerPersonne(personne)">Modifier</button>
+        <button (click)="supprimer(personne.idPers)">Supprimer</button>
+      </div>
+    </li>
+  </ul>
