@@ -1,14 +1,28 @@
+<<<<<<< HEAD
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthentificationRequest } from '../models/authentification-request';
+import { utilisateurService } from '../services/utilisateur.service';
+=======
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationRequest } from '../models/authentification-request';
 import { personneService } from '../services/personne.service';
+>>>>>>> main
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+<<<<<<< HEAD
+export class LoginComponent  {
+  
+  
+  
+ 
+=======
 export class LoginComponent implements OnInit {
   
   username!:string ;
@@ -47,5 +61,6 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+>>>>>>> main
 
 }

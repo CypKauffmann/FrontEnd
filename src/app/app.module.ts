@@ -14,7 +14,11 @@ import { CommercialComponent } from './composant/commercial/commercial.component
 import { EnteteComponent } from './composant/entete/entete.component';
 import { FormationComponent } from './formation/formation.component';
 import { LoginComponent } from './login/login.component';
+<<<<<<< HEAD
+import { InscriptionComponent } from './inscription/inscription.component';
+=======
 import { AccueilComponent } from './composant/accueil/accueil.component';
+>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
     EnteteComponent,
     FormationComponent,
     LoginComponent,
+<<<<<<< HEAD
+    InscriptionComponent
+=======
     AccueilComponent
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
