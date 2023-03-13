@@ -392,7 +392,7 @@ export class CommercialComponent implements OnInit {
       response=>
       {
         this.paie = response
-        if(this.paie.dejaRegler != this.paie.montantTot)
+        if(response.dejaRegler != response.montantTot)
         {
           this.participantservice.getById(response.participant.idPers).subscribe(
             response=>
