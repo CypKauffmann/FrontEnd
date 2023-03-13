@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Historique } from 'src/app/models/historique';
+import { Paiement } from 'src/app/models/paiement';
+import { Participant } from 'src/app/models/participant';
 import { Personne } from 'src/app/models/personne';
 import { RendezVous } from 'src/app/models/rendez-vous';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { HistoriqueService } from 'src/app/services/historique.service';
 import { PaiementService } from 'src/app/services/paiement.service';
+import { ParticipantService } from 'src/app/services/participant.service';
 import { personneService } from 'src/app/services/personne.service';
 import { RendezvousService } from 'src/app/services/rendezvous.service';
 import { utilisateurService } from 'src/app/services/utilisateur.service';
@@ -21,7 +24,7 @@ import { utilisateurService } from 'src/app/services/utilisateur.service';
 export class CommercialComponent implements OnInit {
 
   constructor(private rdvservice:RendezvousService, private persservice:personneService,
-    private paieservice:PaiementService,
+    private paieservice:PaiementService, private participantservice:ParticipantService,
     private utservice:utilisateurService, private historiqueservice:HistoriqueService,
     private router:Router, private route:ActivatedRoute,
     private elRef: ElementRef)
@@ -51,6 +54,14 @@ export class CommercialComponent implements OnInit {
   //initialiser les utilisateurs
   utilisateurs!:Utilisateur[] ;
 
+  //initialiser les participants
+  participants!:Participant[] ;
+  parti!:Participant ;
+
+  //initialiser les paiements
+  paiements!:Paiement[] ;
+  paie!:Paiement ;
+
   //variable pour ancre de prospect vers rdv
   highlight = false;
   highlight2 = false ;
@@ -73,9 +84,13 @@ export class CommercialComponent implements OnInit {
     this.afficherAllHist() ;
     this.hist = new Historique ;
 
-    // this.persservice.getById(this.idProspect).subscribe(
-    //   response=> this.prospect=response
-    // );
+    // tous les participants
+    this.afficherAllPart() ;
+    this.parti = new Participant ;
+
+    //tous les paiements
+    this.paie = new Paiement ;
+    this.afficherAllPaie() ;
     
   }
 
@@ -173,17 +188,19 @@ export class CommercialComponent implements OnInit {
   //aficher les prospect
   afficherAllProspect()
   {
-    //liste prospects
+    //liste des personnes
     this.persservice.getAll().subscribe(
       response=>  
       {
         this.personnes=response
 
+        //listes des utilisateurs
         this.utservice.getAll().subscribe(
           response => 
           {
             this.utilisateurs = response
 
+            //listes des propects
             this.prospects = this.personnes?.filter((personne) => {
               return !this.utilisateurs.some((p) => p.idPers === personne.idPers)
             });
@@ -344,9 +361,55 @@ export class CommercialComponent implements OnInit {
 
 
 
-  ////////////////////////////////////Participant et paiement//////////////////////////////////////////
+  ///////////////////////////////////////Participant////////////////////////////////////////////////
 
-  
+  afficherAllPart()
+  {
+    this.participantservice.getAll().subscribe(
+      response => 
+      {
+        this.participants = response
+      }
+    );
+  }
+
+
+  //////////////////////////////////////////Paiement/////////////////////////////////////////////////
+
+  afficherAllPaie()
+  {
+    this.paieservice.getAll().subscribe(
+      response => 
+      {
+        this.paiements = response
+      }
+    );
+  }
+
+  rappelPaiement(idpaie:number)
+  {
+    this.paieservice.getById(idpaie).subscribe(
+      response=>
+      {
+        this.paie = response
+        if(response.dejaRegler != response.montantTot)
+        {
+          this.participantservice.getById(response.participant.idPers).subscribe(
+            response=>
+            {
+              this.parti = response
+              let email = response.email
+              let sujet = "Relance pour paiement de formation"
+              let body = "Bonjour, Ceci est une mail de relance car la totalité du montant de formation n'a pas été encore payé. Rendez-vous sur le site du centre de formation afin de voir les détails. Cordialement, ${response.commercial.nomPers} ${response.commercial.prenomPers}(le commercial)"
+              let mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(body)}`;
+
+              window.location.href = mailtoUrl;
+            }
+          );
+        }
+      }
+    );
+  }
 
 
 }

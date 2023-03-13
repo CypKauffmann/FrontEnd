@@ -49,7 +49,15 @@ export class FormateurService {
   
   edit(formateur: Formateur) {
     return this.http.put(`http://localhost:8015/api/formateurs`, formateur);
+}
+
+addFormateurToFormation(idFormation: number, idFormateur: number) {
+  const url = `http://localhost:8015/api/formateurs/formations/${idFormation}/formateurs/${idFormateur}`;
+  return this.http.post<string>(url, null);
+}
+
+
   }
 
-}
+
 
