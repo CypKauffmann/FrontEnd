@@ -8,8 +8,8 @@
 
 <div class="m-auto w-75">
     <h3><em>Rendez-vous à venir</em></h3>
-    <table class="text-center  w-100">
-        <thead>
+    <table class="table text-center w-100">
+        <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Date</th>
@@ -103,8 +103,8 @@
 <div class="ml-5 mr-5">
     <h3><em>Liste des prospects</em></h3>
 
-    <table class="text-center w-100">
-        <thead>
+    <table class="table text-center w-100">
+        <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Nom</th>
@@ -126,8 +126,8 @@
 
                 <td><a href="mailto:{{prosp.email}}">{{prosp.email}}</a></td>
                 <td><button class="btn btn-danger" (click)="supprimerPropsect(prosp.idPers)">Supprimer</button>
-                <button class="btn btn-secondary ml-1" (click)="modifierProspect(prosp.idPers)">Modifier</button>
-                <br><button class="btn btn-success mt-1" (click)="ancreajoutRdv(prosp.idPers)">Ajouter un rendez-vous</button>
+                <button class="btn btn-secondary mt-1" (click)="modifierProspect(prosp.idPers)">Modifier</button>
+                <br><button class="btn btn-success mt-1" (click)="ancreajoutRdv(prosp.idPers)">Ajout rendez-vous</button>
                 </td>
 
                 <td>
@@ -203,24 +203,49 @@
 <div class="ml-5 mr-5">
     <h3><em>Liste des participants affilié au commercial</em></h3>
 
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Montant total à payer</th>
-            <th>Montant à payer</th>
-            <th>Montant déjà payé</th>
-            <th>Type de paiement</th>
-        </tr>
-        <tr *ngFor="">
-            <th></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <table class="table text-center w-100">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Mail</th>
+                <th>Paiements</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let part of participants">
+                <th>{{part.idPers}}</th>
+                <td>{{part.nomPers}}</td>
+                <td>{{part.prenomPers}}</td>
+                <td>{{part.email}}</td>
+                <td>
+                    <table class="table text-center w-100">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Total à payer</th>
+                                <th>A payer</th>
+                                <th>Déjà payé</th>
+                                <th>Type de paiement</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let paie of paiements">
+                                <td *ngIf="part.idPers == paie.participant.idPers">{{paie.montantTot}}</td>
+                                <td *ngIf="part.idPers == paie.participant.idPers">{{paie.dejaRegler}}</td>
+                                <td *ngIf="part.idPers == paie.participant.idPers">{{paie.aRembourser}}</td>
+                                <td *ngIf="part.idPers == paie.participant.idPers">{{paie.typePaiement}}</td>
+                                <td *ngIf="part.idPers == paie.participant.idPers">
+                                    <button class="btn btn-success mt-1" (click)="rappelPaiement(paie.idPaie)">
+                                        Rappel de paiement
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
