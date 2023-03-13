@@ -14,6 +14,7 @@ import { CommercialComponent } from './composant/commercial/commercial.component
 import { EnteteComponent } from './composant/entete/entete.component';
 import { FormationComponent } from './formation/formation.component';
 import { LoginComponent } from './login/login.component';
+import { AccueilComponent } from './composant/accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     GestionFormationComponent,
     EnteteComponent,
     FormationComponent,
-    LoginComponent
+    LoginComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
