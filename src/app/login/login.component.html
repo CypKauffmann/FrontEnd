@@ -1,1 +1,18 @@
-<p>login works!</p>
+<p>Formulaire de connexion</p>
+
+<form (ngSubmit)="demandeAuth()">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" required>
+    </div>
+    <div>
+    <button type="submit">Login</button>
+  </div>
+</form>
+
+<h1>si vous n'est pas connecté cliquez ici pour vous inscrire</h1>
+<a routerLink="inscription">Lien vers formulaire d'inscription</a>
