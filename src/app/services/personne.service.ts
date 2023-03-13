@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthentificationRequest } from '../models/authentification-request';
+import { AuthentificationResponse } from '../models/authentification-response';
 import { Personne } from '../models/personne';
 
 @Injectable({
@@ -8,6 +10,11 @@ import { Personne } from '../models/personne';
 })
 export class personneService {
   constructor(private http: HttpClient) {}
+
+  authentification(authRequest:AuthentificationRequest)
+  {
+    return this.http.post<AuthentificationResponse>("http://localhost:8015/api/loginUserJwt", authRequest);
+  }
 
   getAll() {
     return this.http.get<Personne[]>('http://localhost:8015/api/personnes');
