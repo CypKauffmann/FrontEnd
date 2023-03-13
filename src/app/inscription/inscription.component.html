@@ -1,0 +1,20 @@
+<p>Iscription</p>
+<form (ngSubmit)="inscription()">
+    <label>Nom:</label>
+    <input type="text" name="nom" [(ngModel)]="personne.nomPers" required>
+    <label>Prénom:</label>
+    <input type="text" name="prenom" [(ngModel)]="personne.prenomPers" required>
+    <label>Age:</label>
+    <input type="number" name="age" [(ngModel)]="personne.age" required>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="personne.email" required>
+    <label>Teléphone:</label>
+    <input type="text" name="tel" [(ngModel)]="personne.tel" required>
+    <label>Username:</label>
+    <input type="text" name="username" [(ngModel)]="personne.utilisateur.username" required>
+    <label>Mot de pass:</label>
+    <input type="password" name="password" [(ngModel)]="personne.utilisateur.password" required>
+    
+    <button type="button" (click)="valider()">Annuler</button>
+
+</form><br>
