@@ -15,8 +15,9 @@ import { EnteteComponent } from './composant/entete/entete.component';
 import { FormationComponent } from './composant/formation/formation.component';
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { AccueilComponent } from './composant/accueil/accueil.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
+import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
+import { AccueilComponent } from './composant/accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
     FormationComponent,
     LoginComponent,
     InscriptionComponent,
+    AcAdminComponent,
     AccueilComponent
   ],
   imports: [

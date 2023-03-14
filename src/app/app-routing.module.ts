@@ -16,6 +16,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { AccueilComponent } from './composant/accueil/accueil.component';
 import { CommercialComponent } from './composant/commercial/commercial.component';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent, canActivate:[AuthGuardGuard]},
@@ -28,7 +29,7 @@ const routes: Routes = [
   {path:'Connexion', component: LoginComponent},
   {path:'inscription', component: InscriptionComponent},
   {path:'pageAccueil', component: AccueilComponent},
-
+  {path:'pageAccueilAdmin', component: AcAdminComponent}
 
 ];
 

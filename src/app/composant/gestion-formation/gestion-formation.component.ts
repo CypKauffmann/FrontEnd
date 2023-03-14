@@ -27,6 +27,7 @@ export class GestionFormationComponent {
   formationInitiale: Formation = new Formation();
   isEditMode: boolean = false;
   hasAffectation: boolean = false;
+  searchText!: string;
 
 
 
@@ -188,5 +189,21 @@ updateDuree() {
     });
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 }
