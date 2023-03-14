@@ -42,6 +42,9 @@ export class formationService {
     return this.http.get<Formation[]>('//localhost:8015/api/participants-formateurs');
   }
 
+
+
+
   
 
 }
