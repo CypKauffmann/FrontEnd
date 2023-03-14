@@ -1,42 +1,42 @@
-<h1>Gestion des formations et des participants</h1>
+<h1 class="text-center">Gestion des formations et des participants</h1>
 
 
 
 
-<h2>{{ isEditing ? 'Modifier une formation' : 'Ajouter une formation' }}</h2>
+<h2><em>{{ isEditing ? 'Modifier une formation' : 'Ajouter une formation' }}</em></h2>
 
 <form (ngSubmit)="onSubmit()">
   <div>
-    <label for="nomForm">Nom de la formation:</label>
-    <input type="text" id="nomForm" [(ngModel)]="formation.nomForm" name="nomForm" required [ngModelOptions]="{standalone: true}">
+    <label for="nomForm">Nom de la formation </label>
+    <input type="text" id="nomForm" class="form-control" [(ngModel)]="formation.nomForm" name="nomForm" required [ngModelOptions]="{standalone: true}">
   </div>
   <div>
-    <label for="prix">Prix:</label>
-    <input type="number" id="prix" [(ngModel)]="formation.prix" name="prix" required [ngModelOptions]="{standalone: true}">
+    <label for="prix">Prix </label>
+    <input type="number" id="prix" class="form-control" [(ngModel)]="formation.prix" name="prix" required [ngModelOptions]="{standalone: true}">
   </div>
   <div>
-    <label for="dateDebut">Date de début:</label>
-    <input type="date" id="dateDebut" [(ngModel)]="formation.dateDebut" name="dateDebut" required [ngModelOptions]="{standalone: true}" (ngModelChange)="updateDuree()">
+    <label for="dateDebut">Date de début </label>
+    <input type="date" id="dateDebut" class="form-control" [(ngModel)]="formation.dateDebut" name="dateDebut" required [ngModelOptions]="{standalone: true}" (ngModelChange)="updateDuree()">
   </div>
   <div>
-    <label for="dateFin">Date de fin:</label>
-    <input type="date" id="dateFin" [(ngModel)]="formation.dateFin" name="dateFin" required [ngModelOptions]="{standalone: true}" (ngModelChange)="updateDuree()">
+    <label for="dateFin">Date de fin </label>
+    <input type="date" id="dateFin" class="form-control" [(ngModel)]="formation.dateFin" name="dateFin" required [ngModelOptions]="{standalone: true}" (ngModelChange)="updateDuree()">
   </div>
   <div>
-    <label for="duree">Durée en jours:</label>
-    <input type="number" id="duree" [(ngModel)]="formation.duree" readonly [ngModelOptions]="{standalone: true}">
+    <label for="duree">Durée en jours </label>
+    <input type="number" id="duree" class="form-control" [(ngModel)]="formation.duree" readonly [ngModelOptions]="{standalone: true}">
   </div>
   
-  <button type="submit">{{ isEditing ? 'Modifier' : 'Ajouter' }}</button>
-  <button *ngIf="isEditing" type="button" (click)="onCancel()">Annuler</button>
+  <button type="submit" class="btn btn-secondary">{{ isEditing ? 'Modifier' : 'Ajouter' }}</button>
+  <button *ngIf="isEditing" type="button" (click)="onCancel()" class="btn btn-danger">Annuler</button>
 </form>
 
 
 
 <div *ngIf="formations && formations.length > 0">
   <h2>Liste des formations</h2>
-  <table>
-    <thead>
+  <table class="table text-center w-100 ml-5 mr-5">
+    <thead class="thead-light">
       <tr>
         <th>Nom de la formation</th>
         <th>Date de début</th>
@@ -86,8 +86,8 @@
 
 <div *ngIf="participantsWithoutFormation && participantsWithoutFormation.length > 0">
   <h2>Liste des participants sans formation :</h2>
-  <table>
-    <thead>
+  <table class="table text-center w-100 ml-5 mr-5">
+    <thead  class="thead-light">
       <tr>
         <th>Nom</th>
         <th>Prénom</th>
@@ -114,8 +114,8 @@
 
 <div *ngIf="participants && participants.length > 0">
   <h2>Liste des participants :</h2>
-  <table>
-    <thead>
+  <table class="table text-center w-100 ml-5 mr-5">
+    <thead class="thead-light">
       <tr>
         <th>Nom</th>
         <th>Prénom</th>
