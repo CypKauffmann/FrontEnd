@@ -7,10 +7,6 @@ import { Paiement } from 'src/app/models/paiement';
 import { formationService } from 'src/app/services/formation.service'; 
 import { PaiementService } from 'src/app/services/paiement.service';
 
-import { Formation } from '../../models/formation';
-import { Paiement } from '../../models/paiement';
-import { formationService } from '../../services/formation.service';
-
 @Component({
   selector: 'app-formation',
   templateUrl: './formation.component.html',
@@ -24,20 +20,8 @@ export class FormationComponent implements OnInit {
     private participantService: ParticipantService
   ) {}
 
-  formation!: Formation;
-  formations!: Formation[];
-  paiements!: Paiement[];
   ut!: Utilisateur;
 
-export class FormationComponent implements OnInit{
- 
- 
-
-  constructor(private formationService:formationService,private router:Router,private paiementService: PaiementService)
-
-  {
-
-  }
 
   montantTot= 0;
   aRembourser= 0;
@@ -153,6 +137,11 @@ export class FormationComponent implements OnInit{
     this.typePaiementChoisi = 'une fois';
     this.dejaRegler = 0;
     this.aRembourser = prix;
+  }
+
+  annulerPaiement()
+  {
+    
   }
   
 
