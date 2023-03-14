@@ -1,25 +1,27 @@
+<h1>Espace formations</h1>
+
+
 <table>
   <thead>
     <tr>
-      <th>ID</th>
       <th>Nom Formation</th>
       <th>Date de début</th>
       <th>Date de fin</th>
       <th>durée</th>
       <th>prix</th>
-      <th>Détails des paiements</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let formation of formations">
-      <td>{{ formation.idForm }}</td>
       <td>{{ formation.nomForm }}</td>
       <td>{{ formation.dateDebut | date }}</td>
       <td>{{ formation.dateFin | date }}</td>
-      <td>{{ formation.duree }} mois</td>
+      <td>{{ formation.duree }} jours</td>
       <td>{{ formation.prix }} €</td>
       <td>
+        <button *ngIf="ut" (click)="addParticipantAndRedirectToPayment(formation.idForm, ut.idPers)">S'inscrire et payer</button>
         <table>
           <thead>
             <tr>

@@ -18,6 +18,7 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
+import { PaFormComponent } from './composant/pa-form/pa-form.component';
 
 
 @NgModule({
@@ -36,6 +37,8 @@ import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
     AccueilComponent,
     InscriptionComponent,
     AcAdminComponent,
+    AccueilComponent,
+    PaFormComponent
   ],
   imports: [
     BrowserModule,
