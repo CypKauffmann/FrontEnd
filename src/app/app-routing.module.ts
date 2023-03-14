@@ -17,15 +17,19 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
 import { CommercialComponent } from './composant/commercial/commercial.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
+import { FormationComponent } from './composant/formation/formation.component';
+
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherFormateurs', component:FormateurComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherParticipants', component:ParticipantComponent, canActivate:[AuthGuardGuard]},
+   {path:'afficherFormations', component:FormationComponent},
   {path:'GestionUtilisateur', component: GestionUtilisateurComponent, canActivate:[AuthGuardGuard]},
   {path:'GestionFormation', component: GestionFormationComponent, canActivate:[AuthGuardGuard]},
   {path:'GestionFormateur', component: GestionFormateurComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherEspaceCommercial', component: CommercialComponent, canActivate:[AuthGuardGuard]},
+
   {path:'Connexion', component: LoginComponent},
   {path:'inscription', component: InscriptionComponent},
   {path:'pageAccueil', component: AccueilComponent},

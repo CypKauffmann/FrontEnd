@@ -1,5 +1,3 @@
-<h1>Espace formation</h1>
-
 <table>
   <thead>
     <tr>
@@ -30,6 +28,7 @@
               <th>Montant total</th>
               <th>Déjà réglé</th>
               <th>A rembourser</th>
+              <th>Payer</th>
             </tr>
           </thead>
           <tbody>
@@ -39,6 +38,7 @@
               <td>{{ paiement.montantTot }} €</td>
               <td>{{ paiement.dejaRegler }} €</td>
               <td>{{ paiement.aRembourser }} €</td>
+              <td><button (click)="payer(formation.idForm, formation.prix)">Payer</button></td>
             </tr>
           </tbody>
         </table>
@@ -46,3 +46,27 @@
     </tr>
   </tbody>
 </table>
+
+<form #p="ngForm" (ngSubmit)="validerPaiement()">
+  <label for="montantTot">Total :</label>
+  <input type="number" [(ngModel)]="montantTot" id="montantTot" disabled>
+
+  <label for="dejaRegler">Montant à régler:</label>
+  <input type="number" [(ngModel)]="dejaRegler" id="dejaRegler">
+
+  <label for="aRembourser">Montant restant:</label>
+  <input type="number" [(ngModel)]="aRembourser" id="aRembourser" disabled>
+
+  <label for="typePaiement">Type de paiement :</label>
+  <select [(ngModel)]="typePaiementChoisi" id="typePaiement">
+    <option value="une fois">Une fois</option>
+    <option value="deux fois">Deux fois</option>
+    <option value="trois fois">Trois fois</option>
+  </select>
+
+  <div>
+    <button type="button" (click)="annulerPaiement()">Annuler</button>
+    <button type="submit">Valider le paiement</button>
+  </div>
+</form>
+
