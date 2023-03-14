@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Formation } from '../models/formation';
-import { Paiement } from '../models/paiement';
-import { formationService } from '../services/formation.service';
+import { Formation } from '../../models/formation';
+import { Paiement } from '../../models/paiement';
+import { formationService } from '../../services/formation.service';
 
 @Component({
   selector: 'app-formation',

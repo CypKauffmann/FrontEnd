@@ -1,6 +1,12 @@
 <h1>Gestion des formations et des participants</h1>
 
 
+<button class="btn btn-primary btn-block" routerLink="/pageAccueilAdmin">Revenir à l'Acceuil Admin</button>
+
+
+
+
+
 
 
 <h2>{{ isEditing ? 'Modifier une formation' : 'Ajouter une formation' }}</h2>
@@ -111,6 +117,13 @@
     </tbody>
   </table>
 </div>
+
+
+
+
+
+
+
 
 <div *ngIf="participants && participants.length > 0">
   <h2>Liste des participants :</h2>

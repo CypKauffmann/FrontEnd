@@ -14,6 +14,7 @@ import { GestionFormateurComponent } from './composant/gestion-formateur/gestion
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AccueilComponent } from './composant/accueil/accueil.component';
+import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path:'Connexion', component: LoginComponent},
   {path:'inscription', component: InscriptionComponent},
   {path:'pageAccueil', component: AccueilComponent},
-
+  {path:'pageAccueilAdmin', component: AcAdminComponent}
 
 ];
 
