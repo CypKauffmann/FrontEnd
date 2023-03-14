@@ -23,11 +23,15 @@ import { personneService } from 'src/app/services/personne.service';
     personne: Personne = new Personne();
     editingUser: Personne | null = null;
     //utilisateur: Utilisateur = new Utilisateur();
+    ut!:Personne ;
+
 
     ngOnInit(): void {
       this.getAll();
       //this.utilisateur = this.authService.utilisateurConnecte; // accès à l'utilisateur connecté
+      let sessionUser=sessionStorage.getItem("user");
 
+      this.ut = sessionUser!==null ? JSON.parse(sessionUser) : null;
     }
 
     getAll(): void {

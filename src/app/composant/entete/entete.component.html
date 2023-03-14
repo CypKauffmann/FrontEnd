@@ -10,7 +10,7 @@
         <ul class="navbar-nav mr-auto">
               
             <li class="nav-item  active">
-                <a class="nav-link" routerLink="/afficherFormations">Formations</a>
+                <a class="nav-link" routerLink="/afficherEspaceFormation">Formations</a>
             </li>
               
             <li class="nav-item active">
@@ -21,9 +21,7 @@
                 <a class="nav-link" routerLink="/afficherPersonnes">Espace Perso</a>
             </li>
 
-            <li class="nav-item" *ngIf="ut!=null && ut.role.nomRole == 'Participant'">
-                <a class="nav-link" routerLink="/afficherParticipants">Espace Participant</a>
-            </li>
+          
 
             <li class="nav-item" *ngIf="ut!=null &&  ut.role.nomRole == 'Formateur'">
                 <a class="nav-link" routerLink="/afficherFormateurs">Espace Formateur</a>

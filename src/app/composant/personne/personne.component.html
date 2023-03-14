@@ -1,6 +1,6 @@
 <h1>Espace personnes </h1>
 
-<!-- Formulaire d'ajout/modification de personne -->
+<!-- Formulaire /modification de personne -->
 <form #personneForm="ngForm" (ngSubmit)="ajouter(personneForm)">
   <input type="hidden" name="idPers" [(ngModel)]="personne.idPers">
   <label>Nom:</label>
@@ -19,17 +19,19 @@
 
 <!-- Affichage de la liste des personnes -->
 
-  <ul>
-    <li *ngFor="let personne of personnes">
-      <div>ID : {{personne.idPers}}</div>
-      <div>Nom : {{personne.nomPers}}</div>
-      <div>Prénom : {{personne.prenomPers}}</div>
-      <div>Age : {{personne.age}}</div>
-      <div>Email : {{personne.email}}</div>
-      <div>Tel : {{personne.tel}}</div>
+  <ul *ngIf="ut">
+    <li>
+      <div>ID : {{ut.idPers}}</div>
+      <div>Nom : {{ut.nomPers}}</div>
+      <div>Prénom : {{ut.prenomPers}}</div>
+      <div>Age : {{ut.age}}</div>
+      <div>Email : {{ut.email}}</div>
+      <div>Tel : {{ut.tel}}</div>
       <div>
-        <button (click)="selectionnerPersonne(personne)">Modifier</button>
-        <button (click)="supprimer(personne.idPers)">Supprimer</button>
+        <button (click)="selectionnerPersonne(ut)">Modifier</button>
+        <button (click)="supprimer(ut.idPers)">Supprimer</button>
       </div>
     </li>
   </ul>
+
+
