@@ -18,7 +18,6 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
-import { AccueilComponent } from './composant/accueil/accueil.component';
 
 
 @NgModule({
@@ -35,7 +34,7 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
     FormationComponent,
     LoginComponent,
     AccueilComponent,
-    InscriptionComponent
+    InscriptionComponent,
     AcAdminComponent,
   ],
   imports: [
