@@ -14,11 +14,13 @@ import { CommercialComponent } from './composant/commercial/commercial.component
 import { EnteteComponent } from './composant/entete/entete.component';
 import { FormationComponent } from './composant/formation/formation.component';
 import { LoginComponent } from './login/login.component';
+import { AccueilComponent } from './composant/accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
 import { AccueilComponent } from './composant/accueil/accueil.component';
 import { PaFormComponent } from './composant/pa-form/pa-form.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { PaFormComponent } from './composant/pa-form/pa-form.component';
     EnteteComponent,
     FormationComponent,
     LoginComponent,
-    InscriptionComponent,
+    AccueilComponent,
+    InscriptionComponent
     AcAdminComponent,
     AccueilComponent,
     PaFormComponent

@@ -53,6 +53,7 @@ export class CommercialComponent implements OnInit {
 
   //initialiser les utilisateurs
   utilisateurs!:Utilisateur[] ;
+  currentUser!:Utilisateur ;
 
   //initialiser les participants
   participants!:Participant[] ;
@@ -67,9 +68,14 @@ export class CommercialComponent implements OnInit {
   highlight2 = false ;
   highlight3 = false ;
 
+  //liste des id de commercial dans les rendez vous
+  tableIdComm!:number[] ;
+
+  
+
 
   ngOnInit(): void {
-
+    this.currentUser=new Utilisateur();
     //tous les rdv
     this.afficherAllRdv() ;
     this.rdv = new RendezVous ;
@@ -91,6 +97,17 @@ export class CommercialComponent implements OnInit {
     //tous les paiements
     this.paie = new Paiement ;
     this.afficherAllPaie() ;
+
+    //utilisateur connecté dans la session
+    let sessionUser=sessionStorage.getItem("user");
+    this.currentUser = sessionUser!==null ? JSON.parse(sessionUser) : new Utilisateur();
+
+
+    //liste id ccommercial dans rdv
+    // for(let i of this.rendezvous)
+    // {
+    //   this.tableIdComm.push(i.commercial.idPers)
+    // }
     
   }
 
@@ -125,6 +142,8 @@ export class CommercialComponent implements OnInit {
         this.prospect=response
         this.rdv.personne = this.prospect
 
+        // this.currentUser.idPers = this.rdv.commercial.idPers
+        
         this.rdvservice.add(this.rdv).subscribe(
           response=> 
           {
@@ -286,17 +305,17 @@ export class CommercialComponent implements OnInit {
     this.persservice.getById(this.idProspectHIST).subscribe(
       response=>
       {
-        console.log(response)
+        // console.log(response)
         this.prospect=response
         this.hist.personne = this.prospect
-        console.log(this.hist)
+        // console.log(this.hist)
         this.historiqueservice.add(this.hist).subscribe(
           response=> 
           {
-            console.log(this.rdv)
+            // console.log(this.rdv)
             if(this.rdv.idRdv != null)
             {
-              console.log('bonjour')
+              // console.log('bonjour')
               this.rdvservice.delete(this.rdv.idRdv).subscribe(
                 response=>
                 {

@@ -20,16 +20,20 @@ import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
 import { FormationComponent } from './composant/formation/formation.component';
 import { PaFormComponent } from './composant/pa-form/pa-form.component';
 
+
+
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherFormateurs', component:FormateurComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherParticipants', component:ParticipantComponent, canActivate:[AuthGuardGuard]},
+   {path:'afficherFormations', component:FormationComponent},
   {path:'GestionUtilisateur', component: GestionUtilisateurComponent, canActivate:[AuthGuardGuard]},
   {path:'GestionFormation', component: GestionFormationComponent, canActivate:[AuthGuardGuard]},
   {path:'GestionFormateur', component: GestionFormateurComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherEspaceCommercial', component: CommercialComponent, canActivate:[AuthGuardGuard]},
   {path:'afficherEspaceFormation', component: FormationComponent},
   {path:'PaForm', component: PaFormComponent, canActivate:[AuthGuardGuard]},  
+
   {path:'Connexion', component: LoginComponent},
   {path:'inscription', component: InscriptionComponent},
   {path:'pageAccueil', component: AccueilComponent},
