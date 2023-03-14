@@ -1,5 +1,5 @@
 <br>
-<h1 class="text-center">Bonjour (mettre le nom du commercial connecté)</h1>
+<h1 class="text-center">Bonjour {{currentUser.prenomPers}} {{currentUser.nomPers}}</h1>
 <h2 class="text-center">Espace Commercial</h2>
 
 <br>
@@ -21,12 +21,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let rdv of rendezvous">
-                <th>{{rdv.idRdv}}</th>
-                <td>{{rdv.dateRdv | date:'dd/MM/yyyy'}}</td>
-                <td>{{rdv.dateRdv | date:'HH:mm'}}</td>
-                <td>{{rdv.personne.nomPers}} {{rdv.personne.prenomPers}}</td>
-                <td>{{rdv.commercial.nomPers}} {{rdv.commercial.prenomPers}}</td>
-                <td>
+                <th *ngIf="currentUser.idPers == rdv.commercial.idPers">{{rdv.idRdv}}</th>
+                <td *ngIf="currentUser.idPers == rdv.commercial.idPers">{{rdv.dateRdv | date:'dd/MM/yyyy'}}</td>
+                <td *ngIf="currentUser.idPers == rdv.commercial.idPers">{{rdv.dateRdv | date:'HH:mm'}}</td>
+                <td *ngIf="currentUser.idPers == rdv.commercial.idPers">{{rdv.personne.nomPers}} {{rdv.personne.prenomPers}}</td>
+                <td *ngIf="currentUser.idPers == rdv.commercial.idPers">{{rdv.commercial.nomPers}} {{rdv.commercial.prenomPers}}</td>
+                <td *ngIf="currentUser.idPers == rdv.commercial.idPers">
                     <button class="btn btn-danger" (click)="supprimerRdv(rdv.idRdv)">Supprimer</button>
                     <button class="btn btn-secondary ml-1" (click)="modifierRdv(rdv.idRdv)">Modifier</button>
                     <br><button class="btn btn-info mt-1" (click)="ancreajoutHist(rdv.idRdv, rdv.personne.idPers)">Valider un historique</button>
@@ -52,7 +52,6 @@
 
             <form (ngSubmit)="ajoutRdv()">
                 <label for="dateRdv" class="col-sm-2 col-form-label">Date </label>
-                <!-- <input name="dateRdv" type="datetime-local" [(ngModel)] ="rdv.dateRdv" class="form-control" placeholder="jj/mm/aaaa"/> -->
                 <input name="dateRdv" type="datetime-local" [ngModel]="rdv.dateRdv | date:'yyyy-MM-dd HH:mm'" (ngModelChange)="rdv.dateRdv=$event" class="form-control" placeholder="jj/mm/aaaa HH:mm"/>
                 <br>
                 <label for="idPropectRDV">Prospect </label>
