@@ -14,11 +14,14 @@ import { GestionFormateurComponent } from './composant/gestion-formateur/gestion
 import { LoginComponent } from './login/login.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { AccueilComponent } from './composant/accueil/accueil.component';
+import { FormationComponent } from './composant/formation/formation.component';
+
 
 const routes: Routes = [
   {path:'afficherPersonnes', component:PersonneComponent},
   {path:'afficherFormateurs', component:FormateurComponent},
   {path:'afficherParticipants', component:ParticipantComponent},
+  {path:'afficherFormations', component:FormationComponent},
   {path:'GestionUtilisateur', component: GestionUtilisateurComponent},
   {path:'GestionFormation', component: GestionFormationComponent},
   {path:'GestionFormateur', component: GestionFormateurComponent},

@@ -9,6 +9,7 @@ import { Paiement } from '../models/paiement';
 export class PaiementService {
 
   constructor(private http: HttpClient) {}
+  private baseUrl = 'http://localhost:8080/api';
 
   getAll() {
     return this.http.get<Paiement[]>('http://localhost:8015/api/paiements');
@@ -28,5 +29,11 @@ export class PaiementService {
 
   trouverFormationParIdPaiement(idPaie: number) {
     return this.http.get<Formation>(`http://localhost:8080/api/paiements/${idPaie}/formation`);
+  }
+
+  
+  validerPaiement(id: number, paiement: Paiement)
+  {
+    return this.http.post(`${this.baseUrl}/payer-formation/${id}`, paiement);
   }
 }

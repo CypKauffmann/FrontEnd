@@ -12,13 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
 import { EnteteComponent } from './composant/entete/entete.component';
-import { FormationComponent } from './formation/formation.component';
+import { FormationComponent } from './composant/formation/formation.component';
 import { LoginComponent } from './login/login.component';
-<<<<<<< HEAD
-import { InscriptionComponent } from './inscription/inscription.component';
-=======
 import { AccueilComponent } from './composant/accueil/accueil.component';
->>>>>>> main
+import { InscriptionComponent } from './inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +30,8 @@ import { AccueilComponent } from './composant/accueil/accueil.component';
     EnteteComponent,
     FormationComponent,
     LoginComponent,
-<<<<<<< HEAD
+    AccueilComponent,
     InscriptionComponent
-=======
-    AccueilComponent
->>>>>>> main
   ],
   imports: [
     BrowserModule,
