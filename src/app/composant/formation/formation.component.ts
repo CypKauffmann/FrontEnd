@@ -5,6 +5,10 @@ import { Paiement } from 'src/app/models/paiement';
 import { formationService } from 'src/app/services/formation.service'; 
 import { PaiementService } from 'src/app/services/paiement.service';
 
+import { Formation } from '../../models/formation';
+import { Paiement } from '../../models/paiement';
+import { formationService } from '../../services/formation.service';
+
 @Component({
   selector: 'app-formation',
   templateUrl: './formation.component.html',
@@ -13,14 +17,17 @@ import { PaiementService } from 'src/app/services/paiement.service';
 export class FormationComponent implements OnInit{
  
  
+
   constructor(private formationService:formationService,private router:Router,private paiementService: PaiementService)
-    
+
   {
 
   }
+
   montantTot= 0;
   aRembourser= 0;
   dejaRegler: number= 0;
+
   formation !:Formation;
   formations!:Formation[];
   paiements!:Paiement[];
@@ -30,12 +37,15 @@ export class FormationComponent implements OnInit{
   montantChoisi: number = 0;
   typePaiementChoisi: string = 'une fois';
   montantAPayer!: number
+
+ 
+
   ngOnInit(): void {
 
     this.formation=new Formation();
     this.afficherAll();
   
-
+   
   }
   afficherAll() {
     this.formationService.getAll().subscribe((response) => {
@@ -48,27 +58,6 @@ export class FormationComponent implements OnInit{
     });
   }
 
-  voirFormation(id: number) {
-    this.router.navigate(['/formations', id]);
-  }
-  
-
- /* payer(): void {
-    if (this.montantChoisi > 0 && this.typePaiementChoisi) {
-      this.validerPaiement();
-  
-      // Appeler la méthode validerPaiement() du service de paiement
-      this.paiementService.validerPaiement(this.formation.idForm, this.formation.paiements[this.formation.paiements.length - 1])
-        .subscribe(
-          () => {
-            console.log("Paiement validé !");
-          },
-          (error) => {
-            console.log("Une erreur est survenue lors de la validation du paiement :", error);
-          }
-        );
-    }
-  }*/
 
   validerPaiement() {
     if (this.montantChoisi > 0) {
@@ -120,25 +109,5 @@ export class FormationComponent implements OnInit{
     this.aRembourser = prix;
   }
   
-  /*validerPaiement() {
-    const paiement = {
-      datePaiement: new Date(),
-      typePaiement: this.typePaiementChoisi,
-      montantTot: this.montantTotalFormation,
-      dejaRegler: this.dejaRegler,
-      aRembourser: this.aRembourser
-    };
-    const formation = this.formations.find(f => f.idForm === this.idFormation);
-    this.formation.paiements.push(this.paiement);
-    this.formation.prix -= this.dejaRegler;
-    this.typePaiementChoisi = 'une fois';
-    this.dejaRegler = 0;
-    this.aRembourser = 0;
-  }*/
-  annulerPaiement() {
-    // Réinitialiser les valeurs des champs du formulaire
-    this.montantAPayer = 0;
-    this.typePaiementChoisi = "une fois";
-  }
-  
+
 }

@@ -1,6 +1,6 @@
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	
-    <a class="navbar-brand" href="#">Centre de formation</a>
+    <a class="navbar-brand" routerLink="/pageAccueil">Centre de formation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,44 +10,51 @@
         <ul class="navbar-nav mr-auto">
               
             <li class="nav-item  active">
-                <a class="nav-link" routerLink="afficherFormations">Formations</a>
+                <a class="nav-link" routerLink="/afficherFormations">Formations</a>
             </li>
               
-            <li class="nav-item  active">
-                <a class="nav-link" routerLink="afficherAnnonces">Nos formateurs</a>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/afficherAnnonces">Nos formateurs</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="afficherPersonnes">Espace Perso</a>
+            <li class="nav-item" *ngIf="deconnexion == false">
+                <a class="nav-link" routerLink="/afficherPersonnes">Espace Perso</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="afficherParticipants">Espace Participant</a>
+            <li class="nav-item" *ngIf="ut!=null && ut.role.nomRole == 'Participant'">
+                <a class="nav-link" routerLink="/afficherParticipants">Espace Participant</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="afficherFormateurs">Espace Formateur</a>
+            <li class="nav-item" *ngIf="ut!=null &&  ut.role.nomRole == 'Formateur'">
+                <a class="nav-link" routerLink="/afficherFormateurs">Espace Formateur</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="afficherEspaceCommercial">Espace Commerciaux</a>
+            <li class="nav-item" *ngIf=" ut!=null &&  ut.role.nomRole == 'Commercial'">
+                <a class="nav-link" routerLink="/afficherEspaceCommercial">Espace Commerciaux</a>
             </li>
             
-            <li class="nav-item">
-                <a class="nav-link" routerLink="panneauAdmin">Administration</a>
+            <li class="nav-item" *ngIf="ut!=null &&  ut.role.nomRole == 'Admin'">
+                <a class="nav-link" routerLink="/pageAccueilAdmin">Administration</a>
             </li>
               
-        </ul> -->
+        </ul> 
         
-        <!-- <form class="form-inline my-2 my-lg-0">
+         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Recherche">
               <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
         </form> -->
         
-     <!--   <div class="text-right ml-3">
+       <div class="text-right ml-3">
             <form (ngSubmit)="connexion()">
                 <input type="submit" class="btn btn-primary" value="Connexion">
             </form>
+
+        <div class="text-right ml-3" *ngIf="deconnexion == false">
+            <button  routerLink="Connexion" class="btn btn-primary">Connexion</button>
+        </div>
+        <div class="text-right ml-3" *ngIf="deconnexion == true">
+            <button (click) = "deconnect()" class="btn btn-danger">Déconnexion</button>
+
         </div>
     </div>
-</nav>-->
+</nav>

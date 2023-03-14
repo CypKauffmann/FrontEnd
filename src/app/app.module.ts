@@ -9,13 +9,17 @@ import { GestionUtilisateurComponent } from './composant/gestion-utilisateur/ges
 import { GestionFormateurComponent } from './composant/gestion-formateur/gestion-formateur.component';
 import { GestionFormationComponent } from './composant/gestion-formation/gestion-formation.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommercialComponent } from './composant/commercial/commercial.component';
 import { EnteteComponent } from './composant/entete/entete.component';
 import { FormationComponent } from './composant/formation/formation.component';
 import { LoginComponent } from './login/login.component';
 import { AccueilComponent } from './composant/accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AuthInterceptorInterceptor } from './auth-interceptor.interceptor';
+import { AcAdminComponent } from './composant/ac-admin/ac-admin.component';
+import { AccueilComponent } from './composant/accueil/accueil.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
     LoginComponent,
     AccueilComponent,
     InscriptionComponent
+    AcAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

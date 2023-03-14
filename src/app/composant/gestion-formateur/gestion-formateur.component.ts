@@ -70,7 +70,19 @@ export class GestionFormateurComponent {
     );
   }
 
+  deleteFormateurfromFormation (idFormation: number, idFormateur: number) {
+    this.formateurService.deleteFormateurfromFormation(idFormation, idFormateur).subscribe(
+      (data) => {
+        this.getAllFormateurs();
+        this.getAllFormations();
 
+      },
+      (error) => {
+        console.log(error);
+        this.getAllFormateurs();
+        this.getAllFormations();
 
-
+      }
+    );
+  }
 }

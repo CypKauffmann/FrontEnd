@@ -52,8 +52,13 @@ export class FormateurService {
 }
 
 addFormateurToFormation(idFormation: number, idFormateur: number) {
-  const url = `http://localhost:8015/api/formateurs/formations/${idFormation}/formateurs/${idFormateur}`;
+  const url = `http://localhost:8015/api/formations/${idFormation}/formateurs/${idFormateur}`;
   return this.http.post<string>(url, null);
+}
+
+deleteFormateurfromFormation(idFormation: number, idFormateur: number) {
+  const url = `http://localhost:8015/api/formations/${idFormation}/formateurs/${idFormateur}`;
+  return this.http.delete<string>(url);
 }
 
 

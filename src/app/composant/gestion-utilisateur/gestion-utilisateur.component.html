@@ -1,7 +1,21 @@
-<h1>Gestion des utilisateurs</h1>
+<h1 class="text-center">Gestion des utilisateurs</h1>
+
+
+<br>
+
+
+<button class="btn btn-primary btn-block" routerLink="/pageAccueilAdmin">Revenir à l'Acceuil Admin</button>
+
+
+<br>
 
 
 <h2>Liste des Utilisateurs</h2>
+
+
+<br>
+
+
 <form class="form-inline" (submit)="filterBySearchText()">
   <div class="form-group">
     <label for="search-input" class="sr-only">Rechercher</label>
@@ -19,22 +33,29 @@
 <ng-container *ngIf="editingUser">
   <h2>Modifier utilisateur</h2>
   <form (submit)="submitEditForm()">
-    <label>Nom:</label>
-    <input type="text" [(ngModel)]="editingUser.nomPers" name="nomPers">
-    <label>Prénom:</label>
-    <input type="text" [(ngModel)]="editingUser.prenomPers" name="prenomPers">
-    <label>Age:</label>
-    <input type="number" [(ngModel)]="editingUser.age" name="age">
-    <label>Email:</label>
-    <input type="email" [(ngModel)]="editingUser.email" name="email">
-    <label>Téléphone:</label>
-    <input type="tel" [(ngModel)]="editingUser.tel" name="tel">
-    <label>Pseudo:</label>
-    <input type="text" [(ngModel)]="editingUser.username" name="username">
-    <label>Mot de passe:</label>
-    <input type="password" [(ngModel)]="editingUser.password" name="password">
-    <button type="submit">Enregistrer</button>
-    <button type="button" (click)="cancelEditForm()">Annuler</button>
+    <label for="nomPers">Nom </label>
+    <input type="text" [(ngModel)]="editingUser.nomPers" name="nomPers" class="form-control">
+
+    <label for="prenomPers">Prénom </label>
+    <input type="text" [(ngModel)]="editingUser.prenomPers" name="prenomPers" class="form-control">
+
+    <label for="age">Age </label>
+    <input type="number" [(ngModel)]="editingUser.age" name="age" class="form-control">
+
+    <label for="email">Email </label>
+    <input type="email" [(ngModel)]="editingUser.email" name="email" class="form-control">
+
+    <label for="tel">Téléphone </label>
+    <input type="tel" [(ngModel)]="editingUser.tel" name="tel" class="form-control">
+
+    <label for="username">Pseudo </label>
+    <input type="text" [(ngModel)]="editingUser.username" name="username" class="form-control">
+
+    <label for="password">Mot de passe </label>
+    <input type="password" [(ngModel)]="editingUser.password" name="password" class="form-control">
+
+    <button type="submit" class="btn btn-secondary">Enregistrer</button>
+    <button type="button" (click)="cancelEditForm()" class="btn btn-danger">Annuler</button>
   </form>
 </ng-container>
 
@@ -43,50 +64,50 @@
 
 
 
-<button (click)="afficherFormulaire = true">Ajouter un nouvel utilisateur</button>
+<button (click)="afficherFormulaire = true" class="btn btn-success">Ajouter un nouvel utilisateur</button>
 
 <div *ngIf="afficherFormulaire">
   <h2>Ajouter un nouvel utilisateur</h2>
 
   <form (submit)="ajouterUtilisateur()">
     <div>
-      <label>Nom:</label>
-      <input type="text" name="nom" [(ngModel)]="nouvelUtilisateur.nomPers" required>
+      <label for="nom">Nom </label>
+      <input type="text" name="nom" [(ngModel)]="nouvelUtilisateur.nomPers" class="form-control" required>
     </div>
     <div>
-      <label>Prénom:</label>
-      <input type="text" name="prenom" [(ngModel)]="nouvelUtilisateur.prenomPers" required>
+      <label for="prenom">Prénom </label>
+      <input type="text" name="prenom" [(ngModel)]="nouvelUtilisateur.prenomPers" class="form-control" required>
     </div>
     <div>
-      <label>Age:</label>
-      <input type="number" name="age" [(ngModel)]="nouvelUtilisateur.age" required>
+      <label for="age">Âge </label>
+      <input type="number" name="age" [(ngModel)]="nouvelUtilisateur.age" class="form-control" required>
     </div>
     <div>
-      <label>Mail:</label>
-      <input type="email" name="email" [(ngModel)]="nouvelUtilisateur.email" required>
+      <label for="email">Mail </label>
+      <input type="email" name="email" [(ngModel)]="nouvelUtilisateur.email" class="form-control" required>
     </div>
     <div>
-      <label>Téléphone:</label>
-      <input type="tel" name="tel" [(ngModel)]="nouvelUtilisateur.tel" required>
+      <label for="tel">Téléphone </label>
+      <input type="tel" name="tel" [(ngModel)]="nouvelUtilisateur.tel" class="form-control" required>
     </div>
     <div>
-      <label>Nom d'utilisateur:</label>
-      <input type="text" name="username" [(ngModel)]="nouvelUtilisateur.username" required>
+      <label for="username">Nom d'utilisateur </label>
+      <input type="text" name="username" [(ngModel)]="nouvelUtilisateur.username" class="form-control" required>
     </div>
     <div>
-      <label>Mot de passe:</label>
-      <input type="password" name="password" [(ngModel)]="nouvelUtilisateur.password" required>
+      <label for="password">Mot de passe </label>
+      <input type="password" name="password" [(ngModel)]="nouvelUtilisateur.password" class="form-control" required>
     </div>
-    <button type="submit">Ajouter</button>
-    <button (click)="afficherFormulaire = false">Annuler</button>
+    <button type="submit" class="btn btn-secondary">Ajouter</button>
+    <button (click)="afficherFormulaire = false" class="btn btn-danger">Annuler</button>
   </form>
 </div>
 
 
 <br>
 
-<table>
-    <thead>
+<table class="table text-center m-auto w-100">
+    <thead class="thead-light">
         <tr>
             <th>Role</th>
             <th>Username</th>
@@ -115,20 +136,20 @@
             <td>{{ utilisateur.age }}</td>
 
             <td>
-              <a href="mailto:{{ utilisateur.email }}">{{ utilisateur.email }}</a>
+              <a href="mailto:{{ utilisateur.email }}" class="btn btn-link">{{ utilisateur.email }}</a>
             </td>            
             
             <td>{{ utilisateur.tel }}</td>
        
-            <td><button (click)="delete(utilisateur.idPers)">Supprimer</button></td>
+            <td><button (click)="delete(utilisateur.idPers)" class="btn btn-danger">Supprimer</button></td>
             
-            <td><button (click)="showEditForm(utilisateur)">Modifier</button></td>
+            <td><button (click)="showEditForm(utilisateur)" class="btn btn-secondary">Modifier</button></td>
 
             <td>
               <ng-container *ngIf="!utilisateur.role">
-                <button (click)="assignParticipant(utilisateur.idPers)">Assigner Participant</button>
-                <button (click)="assignFormateur(utilisateur.idPers)">Assigner Formateur</button>
-                <button (click)="assignCommercial(utilisateur.idPers)">Assigner Commercial</button>
+                <button (click)="assignParticipant(utilisateur.idPers)" class="btn btn-primary">Assigner Participant</button>
+                <button (click)="assignFormateur(utilisateur.idPers)" class="btn btn-primary">Assigner Formateur</button>
+                <button (click)="assignCommercial(utilisateur.idPers)" class="btn btn-primary">Assigner Commercial</button>
               </ng-container>
             </td>
 
